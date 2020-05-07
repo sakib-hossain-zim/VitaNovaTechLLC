@@ -306,7 +306,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                       label="No"
                     />
                     <FormControlLabel
-                      value="Yes"
+                      value="0"
                       control={<Radio color="primary" />}
                       label="Yes"
                     />
@@ -352,7 +352,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                       label="No"
                     />
                     <FormControlLabel
-                      value="Yes"
+                      value="0"
                       control={<Radio color="primary" />}
                       label="Yes"
                     />

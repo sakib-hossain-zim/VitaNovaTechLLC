@@ -362,7 +362,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     />
                     <h3> If yes, please select one of the following options </h3>
                     <FormControlLabel
-                      value="15"
+                      value="015"
                       control={<Radio color="primary" />}
                       label="birth_control"
                     />
