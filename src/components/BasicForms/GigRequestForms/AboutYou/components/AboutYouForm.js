@@ -218,22 +218,22 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 <FormControlLabel
                   value= "5"
                   control={<Radio color="primary" />}
-                  label="once/wk"
+                  label="once per week"
                 />
                 <FormControlLabel
                   value= "15"
                   control={<Radio color="primary" />}
-                  label="2-3/wk"
+                  label="2-3 times per week"
                 />
                 <FormControlLabel
                   value= "10"
                   control={<Radio color="primary" />}
-                  label="4-5/wk"
+                  label="4-5 times per week"
                 />
                 <FormControlLabel
                   value= "010"
                   control={<Radio color="primary" />}
-                  label="6+/wk"
+                  label="6+ times per week"
                 />
                 <FormControlLabel
                   value= "0"
@@ -255,34 +255,34 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 <FormControlLabel
                   value= "15"
                   control={<Radio color="primary" />}
-                  label="No"
+                  label="None"
                 />
                 <FormControlLabel
                   value= "12"
                   control={<Radio color="primary" />}
-                  label="1-2/wk"
+                  label="1-2 drinks per week"
                 />
                 <FormControlLabel
                   value= "10"
                   control={<Radio color="primary" />}
-                  label="3-4/wk"
+                  label="3-4 drinks per week"
                 />
                 <FormControlLabel
                   value= "7"
                   control={<Radio color="primary" />}
-                  label="5-6/wk"
+                  label="5-6 drinks per week"
                 />
                 <FormControlLabel
                   value= "5"
                   control={<Radio color="primary" />}
-                  label="7+/wk"
+                  label="7+ drinks per week"
                 />
             </RadioGroup>
         </FormControl>
       <br/>
       <br/>
       <FormControl component="fieldset" className={classes.formControl}>
-                <h4> <b> Marijuana Consumption (including but not limited to, edibles,pipes, vapes, buds)</b></h4>
+                <h4> <b> Marijuana Consumption (including but not limited to, edibles, pipes, vapes, buds)</b></h4>
               <RadioGroup
                 aria-label="marijuana_frequency"
                 name="marijuana_frequency"
@@ -364,7 +364,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     <FormControlLabel
                       value="015"
                       control={<Radio color="primary" />}
-                      label="birth_control"
+                      label="birth control"
                     />
                      <FormControlLabel
                       value="0"
