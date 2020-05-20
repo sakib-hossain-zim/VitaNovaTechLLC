@@ -238,7 +238,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 <FormControlLabel
                   value= "0"
                   control={<Radio color="primary" />}
-                  label="none"
+                  label="No Alcohol"
                 />
             </RadioGroup>
         </FormControl>
