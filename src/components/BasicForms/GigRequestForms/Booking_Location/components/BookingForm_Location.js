@@ -209,7 +209,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
           <FormControl component="fieldset" className={classes.formControl}>
-                  <h4> <b>Do you use tobacco products?</b></h4>
+                  <h4> <b>Do you currently use or have you used tobacco products?</b></h4>
                 <RadioGroup
                   aria-label="tobacco_products_use"
                   name="tobacco_products_use"
@@ -231,7 +231,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
           </FormControl>
       <br/>
             <FormControl component="fieldset" className={classes.formControl}>
-                    <h4> <b>Do you/have use/d recreational drugs [ex but not limited to cocaine,meth,heroine] ?</b></h4>
+                    <h4> <b>Do you currently use or have you previously used recreational drugs [for example but not limited to; cocaine, methamphetamine, heroine, etc.] ?</b></h4>
                   <RadioGroup
                     aria-label="drug_use"
                     name="drug_use"
@@ -253,7 +253,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             </FormControl>
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
-                    <h4> <b>Are you comfortable taking medical injections and prescriptions?</b></h4>
+                    <h4> <b>Are you comfortable taking medical injections and prescriptions as prescribed by a doctor?</b></h4>
                   <RadioGroup
                     aria-label="injections_use"
                     name="injections_use"
@@ -275,7 +275,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             </FormControl>
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
-                    <h4> <b>Are you comfortable following a doctor's orders [inluding but not limited to medically necessary abortion,diet,exercise chages] ?</b></h4>
+                    <h4> <b>Are you comfortable following a doctor's orders [including but not limited to; diet changes, exercise chages, or a medically necessary abortion] ?</b></h4>
                   <RadioGroup
                     aria-label="doctors_orders"
                     name="doctors_orders"
@@ -297,7 +297,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             </FormControl>
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
-                    <h4> <b>Will you complete a criminal record check ?</b></h4>
+                    <h4> <b>Are you willing to complete a criminal record check?</b></h4>
                   <RadioGroup
                     aria-label="criminalRecord_check"
                     name="criminalRecord_check"
@@ -319,7 +319,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             </FormControl>
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
-                    <h4> <b>Will you take genetic and other record check [cost will be covered] ?</b></h4>
+                    <h4> <b>Are you willing to take genetic and other tests as required by a medical professional? (Costs will be covered)</b></h4>
                   <RadioGroup
                     aria-label="geneticRecord_check"
                     name="geneticRecord_check"
