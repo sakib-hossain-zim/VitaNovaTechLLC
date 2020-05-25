@@ -253,7 +253,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             </FormControl>
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
-                    <h4> <b>Are you comfortable taking medical injections and prescriptions as prescribed by a doctor?</b></h4>
+                    <h4> <b>Are you comfortable taking medical injections and or prescriptions as prescribed by a doctor?</b></h4>
                   <RadioGroup
                     aria-label="injections_use"
                     name="injections_use"
@@ -275,7 +275,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             </FormControl>
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
-                    <h4> <b>Are you comfortable following a doctor's orders [including but not limited to; diet changes, exercise chages, or a medically necessary abortion] ?</b></h4>
+                    <h4> <b>Are you comfortable following a doctor's orders [including but not limited to; diet changes, exercise changes, or a medically necessary abortion] ?</b></h4>
                   <RadioGroup
                     aria-label="doctors_orders"
                     name="doctors_orders"
