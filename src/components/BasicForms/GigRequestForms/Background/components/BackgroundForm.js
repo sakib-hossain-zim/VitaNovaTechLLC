@@ -187,7 +187,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
         <FormControl component="fieldset" className={classes.formControl}>
-                <h4> <b>Do you have a reliable source of income (be it a job, spouse, or investments etc.)</b></h4>
+                <h4> <b>Do you have a reliable source of income (be it a job, spouse, investments etc.)</b></h4>
               <RadioGroup
                 aria-label="reliable_income_source"
                 name="reliable_income_source"
