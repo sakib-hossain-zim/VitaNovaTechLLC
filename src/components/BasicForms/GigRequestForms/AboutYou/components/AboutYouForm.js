@@ -207,7 +207,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
         <FormControl component="fieldset" className={classes.formControl}>
-                <h4> <b> Activity Level (30 mins of exercise, including spin, run, HIIT, yoga, gym, swim</b></h4>
+                <h4> <b> Activity Level (30 mins of exercise, including spin, run, HIIT, yoga, gym, swim etc.)</b></h4>
               <RadioGroup
                 aria-label="exercise_frequency"
                 name="exercise_frequency"
@@ -244,7 +244,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
       <FormControl component="fieldset" className={classes.formControl}>
-                <h4> <b> Alcohol Consumption (1 drink is equivalent to 6 oz of wine, 1 beer, 1 oz cocktail</b></h4>
+                <h4> <b> Alcohol Consumption (1 drink is equivalent to 5 oz of wine, 12 oz (355mL) of beer, 1.5 oz of distilled spirits)</b></h4>
               <RadioGroup
                 aria-label="alcohol_frequency"
                 name="alcohol_frequency"
@@ -282,7 +282,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <br/>
       <br/>
       <FormControl component="fieldset" className={classes.formControl}>
-                <h4> <b> Marijuana Consumption (including but not limited to, edibles, pipes, vapes, buds)</b></h4>
+                <h4> <b> Marijuana Consumption (including but not limited to, edibles, smoking, vapeing, dabbing, topicals etc.)</b></h4>
               <RadioGroup
                 aria-label="marijuana_frequency"
                 name="marijuana_frequency"
@@ -293,23 +293,23 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 <FormControlLabel
                   value= "15"
                   control={<Radio color="primary" />}
-                  label="No"
+                  label="None"
                 />
                 <h3> If yes, please select one of the following options </h3>
                 <FormControlLabel
                   value= "7"
                   control={<Radio color="primary" />}
-                  label="edibles"
+                  label="edibles, or any other oral ingestion"
                 />
                 <FormControlLabel
                   value= "10"
                   control={<Radio color="primary" />}
-                  label="topical/oils"
+                  label="topicals, oils, or CBD (any non THC product)"
                 />
                 <FormControlLabel
                   value= "5"
                   control={<Radio color="primary" />}
-                  label="smoke/vape"
+                  label="smoking, vaping, or any inhalation consumption"
                 />
             </RadioGroup>
         </FormControl>
