@@ -176,17 +176,17 @@ export default withStyles(styles) (class NormalForm extends React.Component {
               <FormControlLabel
                 value= "10"
                 control={<Radio color="primary" />}
-                label=">1 year ago"
+                label="less than 1 year ago"
               />
               <FormControlLabel
                 value= "15"
                 control={<Radio color="primary" />}
-                label=">5 years ago"
+                label="more than 1, but less than 5 years ago"
               />
               <FormControlLabel
                 value= "5"
                 control={<Radio color="primary" />}
-                label="5+ years ago"
+                label="Over 5 years ago"
               />
           </RadioGroup>
         </FormControl>
@@ -264,7 +264,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                       label="No"
                     />
                     <FormControlLabel
-                      value="Yes"
+                      value="0"
                       control={<Radio color="primary" />}
                       label="Yes"
                     />
@@ -280,12 +280,12 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     <FormControlLabel
                       value="15"
                       control={<Radio color="primary" />}
-                      label=">6 months"
+                      label="less than 6 months"
                     />
                     <FormControlLabel
                       value="5"
                       control={<Radio color="primary" />}
-                      label="6+ months"
+                      label="In 6 months or more"
                     />
                 </RadioGroup>
 
