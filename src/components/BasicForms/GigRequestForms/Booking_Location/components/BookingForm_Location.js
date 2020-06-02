@@ -209,7 +209,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
           <FormControl component="fieldset" className={classes.formControl}>
-                  <h4> <b>Do you currently use or have you used tobacco products?</b></h4>
+                  <h4> <b>Do you currently use or have you previously used tobacco products?</b></h4>
                 <RadioGroup
                   aria-label="tobacco_products_use"
                   name="tobacco_products_use"
