@@ -172,6 +172,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
               className={classes.group}
               value={values.birth}
               onChange={handleChangeRadio('birth')}
+              defaultValue= {values.birth}
             >
               <FormControlLabel
                 value= "10"
@@ -318,7 +319,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 </RadioGroup>
             </FormControl>
             <br/>
-            <FormControl component="fieldset" className={classes.formControl}>
+            <FormControl component="fieldset" required = "true" className={classes.formControl}>
                     <h4> <b>Will you take genetic and other record check [cost will be covered] ?</b></h4>
                   <RadioGroup
                     aria-label="geneticRecord_check"
@@ -326,6 +327,9 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     className={classes.group}
                     value={values.geneticRecord_check}
                     onChange={handleChangeRadio('geneticRecord_check')}
+                    required = "true"
+                    
+              
                   >
                     <FormControlLabel
                       value="10"
@@ -336,6 +340,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                       value="400"
                       control={<Radio color="primary" />}
                       label="No"
+                    
                     />
                 </RadioGroup>
             </FormControl>

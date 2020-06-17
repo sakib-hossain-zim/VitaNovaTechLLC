@@ -90,80 +90,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
 
 
       <Fragment>
-      <Typography variant="h6" gutterBottom>
-         <h5 color> <b> Name  </b> </h5>
-        </Typography>
-              
-        <form onSubmit={this.handleSubmit} className="form-v1">
-
-
-
-          {/* <Grid item xs={12}>
-              <TextField
-                required
-                id="required"
-                label="First Name"
-                fullWidth
-                onChange={handleChangeLocation('first_name')}
-                defaultValue={values.first_name}
-                className={classes.textField}
-                margin="normal"
-                variant="outlined"
-                focused
-              />
-               </Grid>
-         
-             <Grid item xs={12}>
-                <TextField
-                  required
-                  id="required"
-                  label="Last Name"
-                  fullWidth
-                  onChange={handleChangeLocation('last_name')}
-                  defaultValue={values.last_name}
-                  className={classes.textField}
-                  margin="normal"
-                  variant="outlined"
-                  focused
-                />
-               </Grid>
-
-               <Typography variant="h6" gutterBottom>
-                  <h5 color> <b> Contact Information  </b> </h5>
-               </Typography>
-
-              <Grid item xs={12}>
-              <TextField
-                required
-                id="required"
-                label="Email Address"
-                fullWidth
-                onChange={handleChangeLocation('email_address')}
-                defaultValue={values.email_address}
-                className={classes.textField}
-                margin="normal"
-                variant="outlined"
-                focused
-              />
-               </Grid>
-         
-             <Grid item xs={12}>
-                <TextField
-                  required
-                  id="required"
-                  label="Phone Number"
-                  fullWidth
-                  onChange={handleChangeLocation('phone_number')}
-                  defaultValue={values.phone_number}
-                  className={classes.textField}
-                  margin="normal"
-                  variant="outlined"
-                  focused
-                />
-              </Grid> */}
-
-
-            
+        <form onSubmit={this.handleSubmit} className="form-v1">            
         <FormControl component="fieldset" className={classes.formControl}>
                <h4> <b>Do you currently have custody (full or half) of your children? </b></h4>
             <RadioGroup
@@ -283,7 +210,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     aria-label="home_life_quality"
                     name="home_life_quality"
                     className={classes.group}
-                    value={values.breast_feeding_timePeriod}
+                    value={values.home_life_quality}
                     onChange={handleChangeRadio('home_life_quality')}
                   >
                     <FormControlLabel

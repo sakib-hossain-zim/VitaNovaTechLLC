@@ -84,85 +84,13 @@ export default withStyles(styles) (class NormalForm extends React.Component {
     // this.props.history.push(DEMO.home2);
   }
   render() {
-    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor} = this.props;
+    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor,handleChangeMiscarriageRadio,handleChangeBreastFeedingRadio,handleChangeCsectionRequirementRadio,handleChangePregnancyAbnormalitiesRadio} = this.props;
     
     return (
 
 
-      <Fragment>
-      <Typography variant="h6" gutterBottom>
-         <h5 color> <b> Name  </b> </h5>
-        </Typography>
-              
+      <Fragment>          
         <form onSubmit={this.handleSubmit} className="form-v1">
-
-
-
-          {/* <Grid item xs={12}>
-              <TextField
-                required
-                id="required"
-                label="First Name"
-                fullWidth
-                onChange={handleChangeLocation('first_name')}
-                defaultValue={values.first_name}
-                className={classes.textField}
-                margin="normal"
-                variant="outlined"
-                focused
-              />
-               </Grid>
-         
-             <Grid item xs={12}>
-                <TextField
-                  required
-                  id="required"
-                  label="Last Name"
-                  fullWidth
-                  onChange={handleChangeLocation('last_name')}
-                  defaultValue={values.last_name}
-                  className={classes.textField}
-                  margin="normal"
-                  variant="outlined"
-                  focused
-                />
-               </Grid>
-
-               <Typography variant="h6" gutterBottom>
-                  <h5 color> <b> Contact Information  </b> </h5>
-               </Typography>
-
-              <Grid item xs={12}>
-              <TextField
-                required
-                id="required"
-                label="Email Address"
-                fullWidth
-                onChange={handleChangeLocation('email_address')}
-                defaultValue={values.email_address}
-                className={classes.textField}
-                margin="normal"
-                variant="outlined"
-                focused
-              />
-               </Grid>
-         
-             <Grid item xs={12}>
-                <TextField
-                  required
-                  id="required"
-                  label="Phone Number"
-                  fullWidth
-                  onChange={handleChangeLocation('phone_number')}
-                  defaultValue={values.phone_number}
-                  className={classes.textField}
-                  margin="normal"
-                  variant="outlined"
-                  focused
-                />
-              </Grid> */}
-
-
             
         <FormControl component="fieldset" className={classes.formControl}>
                <h4> <b>How recently did you give birth? </b></h4>
@@ -191,6 +119,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
           </RadioGroup>
         </FormControl>
       <br/>
+
         <FormControl component="fieldset" className={classes.formControl}>
                 <h4> <b>Did the child survive?</b></h4>
               <RadioGroup
@@ -220,7 +149,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                   name="miscarriage_info"
                   className={classes.group}
                   value={values.miscarriage_info}
-                  onChange={handleChangeRadio('miscarriage_info')}
+                  onChange={handleChangeMiscarriageRadio('miscarriage_info')}
                 >
                   <FormControlLabel
                     value="15"
@@ -232,22 +161,24 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     control={<Radio color="primary" />}
                     label="Yes"
                   />
-                  <Grid item xs={12}>
-                    <TextField
-                        required
-                        id="required"
-                        label="Brief Description"
-                        fullWidth
-                        onChange={handleChangeLocation('miscarriage_explanation')}
-                        defaultValue={values.miscarriage_explanation}
-                        className={classes.textField}
-                        margin="normal"
-                        variant="outlined"
-                        focused
-                    />
-                   </Grid>
               </RadioGroup>
           </FormControl>
+          {values.miscarriage_info_show?
+          <Grid item xs={12}>
+          <TextField
+              required
+              id="required"
+              label="Brief Description"
+              fullWidth
+              onChange={handleChangeRadio('miscarriage_explanation')}
+              defaultValue={values.miscarriage_explanation}
+              className={classes.textField}
+              margin="normal"
+              variant="outlined"
+              focused
+          />
+         </Grid>:null
+        }
       <br/>
             <FormControl component="fieldset" className={classes.formControl}>
                     <h4> <b>Are you breast-feeding?</b></h4>
@@ -256,7 +187,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     name="breast_feeding"
                     className={classes.group}
                     value={values.breast_feeding}
-                    onChange={handleChangeRadio('breast_feeding')}
+                    onChange={handleChangeBreastFeedingRadio('breast_feeding')}
                   >
                     <FormControlLabel
                       value="15"
@@ -264,32 +195,35 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                       label="No"
                     />
                     <FormControlLabel
-                      value="Yes"
+                      value="00"
                       control={<Radio color="primary" />}
                       label="Yes"
                     />
                 </RadioGroup>
-                <h3> When will you be finished? </h3>
-                <RadioGroup
-                    aria-label="breast_feeding_timePeriod"
-                    name="breast_feeding_timePeriod"
-                    className={classes.group}
-                    value={values.breast_feeding_timePeriod}
-                    onChange={handleChangeRadio('breast_feeding_timePeriod')}
-                  >
-                    <FormControlLabel
-                      value="15"
-                      control={<Radio color="primary" />}
-                      label=">6 months"
-                    />
-                    <FormControlLabel
-                      value="5"
-                      control={<Radio color="primary" />}
-                      label="6+ months"
-                    />
-                </RadioGroup>
-
             </FormControl>
+            <br/>
+            {values.breast_feeding_show?
+             <FormControl component="fieldset" className={classes.formControl}>
+              <h4> When will you be finished? </h4>
+              <RadioGroup
+                  aria-label="breast_feeding_timePeriod"
+                  name="breast_feeding_timePeriod"
+                  className={classes.group}
+                  value={values.breast_feeding_timePeriod}
+                  onChange={handleChangeRadio('breast_feeding_timePeriod')}
+                >
+                  <FormControlLabel
+                    value="15"
+                    control={<Radio color="primary" />}
+                    label=">6 months"
+                  />
+                  <FormControlLabel
+                    value="5"
+                    control={<Radio color="primary" />}
+                    label="6+ months"
+                  />
+              </RadioGroup> </FormControl>: null   
+          }
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
                     <h4> <b>Did you have or require a C-section (ceasarian section) to give birth?</b></h4>
@@ -298,7 +232,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     name="csection_requirement"
                     className={classes.group}
                     value={values.csection_requirement}
-                    onChange={handleChangeRadio('csection_requirement')}
+                    onChange={handleChangeCsectionRequirementRadio('csection_requirement')}
                   >
                     <FormControlLabel
                       value="15"
@@ -311,7 +245,10 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                       label="Yes"
                     />
                 </RadioGroup>
-                <h3> How many have you had ? </h3>
+            </FormControl>
+            {values.csection_requirement_show?
+                <FormControl component="fieldset" className={classes.formControl}>
+                <h4> How many have you had ? </h4>
                 <RadioGroup
                     aria-label="csection_frequency"
                     name="csection_frequency"
@@ -334,8 +271,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                       control={<Radio color="primary" />}
                       label="3+"
                     />
-                </RadioGroup>
-            </FormControl>
+                </RadioGroup> </FormControl>: null}
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
                     <h4> <b>Did you experience any abnormalities during your pregnancy</b></h4>
@@ -344,7 +280,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     name="pregnancy_abnormalities"
                     className={classes.group}
                     value={values.pregnancy_abnormalities}
-                    onChange={handleChangeRadio('pregnancy_abnormalities')}
+                    onChange={handleChangePregnancyAbnormalitiesRadio('pregnancy_abnormalities')}
                   >
                     <FormControlLabel
                       value="15"
@@ -357,7 +293,10 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                       label="Yes"
                     />
                 </RadioGroup>
-                <h3> Select from options below </h3>
+            </FormControl>
+            {values.pregnancy_abnormalities_show?
+             <FormControl component="fieldset" className={classes.formControl}>
+                <h4> Select from options below </h4>
                 <RadioGroup
                     aria-label="abnormality_description"
                     name="abnormality_description"
@@ -380,94 +319,8 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                       control={<Radio color="primary" />}
                       label="gestational_diabetes"
                     />
-                </RadioGroup>
-
-            </FormControl>
-            <br/>
-            <FormControl component="fieldset" className={classes.formControl}>
-                    <h4> <b>Will you complete a criminal record check ?</b></h4>
-                  <RadioGroup
-                    aria-label="criminalRecord_check"
-                    name="criminalRecord_check"
-                    className={classes.group}
-                    value={values.criminalRecord_check}
-                    onChange={handleChangeRadio('criminalRecord_check')}
-                  >
-                    <FormControlLabel
-                      value="10"
-                      control={<Radio color="primary" />}
-                      label="Yes"
-                    />
-                    <FormControlLabel
-                      value="400"
-                      control={<Radio color="primary" />}
-                      label="No"
-                    />
-                </RadioGroup>
-            </FormControl>
-            <br/>
-            <FormControl component="fieldset" className={classes.formControl}>
-                    <h4> <b>Will you take genetic and other record check [cost will be covered] ?</b></h4>
-                  <RadioGroup
-                    aria-label="geneticRecord_check"
-                    name="geneticRecord_check"
-                    className={classes.group}
-                    value={values.geneticRecord_check}
-                    onChange={handleChangeRadio('geneticRecord_check')}
-                  >
-                    <FormControlLabel
-                      value="10"
-                      control={<Radio color="primary" />}
-                      label="Yes"
-                    />
-                    <FormControlLabel
-                      value="400"
-                      control={<Radio color="primary" />}
-                      label="No"
-                    />
-                </RadioGroup>
-            </FormControl>
-
-
-
-             {/* <div>
-               <h4> <b>Location Details (Optional)</b></h4>
-                <FormGroup row>
-                 <FormControlLabel
-                  control={
-                    <Checkbox checked={values.useBackDoor} onChange={handleChangeUseBackDoor()} value="Use Back Door" color="primary" />
-                  }
-                  label="Use Back Door"
-                 />
-                 
-                 <FormControlLabel
-                  control={
-                    <Checkbox checked={values.mealProvided} onChange={handleChangeMealProvided()} value="Meal Provided" color="primary" />
-                  }
-                  label="Meal Provided"
-                 />
-                </FormGroup>
-              </div> */}
-           
-            {/* <div>
-            <h4> <b>Additional Location Details (Optional)</b></h4>
-              <TextField
-                id="login1-password"
-                label="Additional Location Details (Optional)"
-                fullWidth
-                margin="normal"
-                variant="outlined"
-                multiline
-                rowsMax="6"
-                autoComplete="off"
-                onChange={handleChangeLocation('additional_location_details')}
-                defaultValue={values.additional_location_details}
-                className={classes.textField}
-              />
-              
-            </div> */}
-            
-
+                </RadioGroup> </FormControl> : null
+            }  
           <br />
           <br />
 

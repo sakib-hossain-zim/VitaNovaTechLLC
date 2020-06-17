@@ -84,15 +84,13 @@ export default withStyles(styles) (class NormalForm extends React.Component {
     // this.props.history.push(DEMO.home2);
   }
   render() {
-    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor} = this.props;
+    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor, handleChangeConvictedofCrimeRadio} = this.props;
     
     return (
 
 
       <Fragment>
-      <Typography variant="h6" gutterBottom>
-         <h5 color> <b> Name  </b> </h5>
-        </Typography>
+      
               
         <form onSubmit={this.handleSubmit} className="form-v1">
 
@@ -215,7 +213,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                   name="convicted_of_crime"
                   className={classes.group}
                   value={values.convicted_of_crime}
-                  onChange={handleChangeRadio('convicted_of_crime')}
+                  onChange={handleChangeConvictedofCrimeRadio('convicted_of_crime')}
                 >
                   <FormControlLabel
                     value="15"
@@ -227,6 +225,11 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     control={<Radio color="primary" />}
                     label="Yes"
                   />
+              </RadioGroup>
+          </FormControl>
+
+          {values.convicted_of_crime_show? 
+            <FormControl component="fieldset" className={classes.formControl}>
                   <h3> If yes, please provide a brief description </h3>
                   <Grid item xs={12}>
                   <TextField
@@ -234,7 +237,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     id="required"
                     label="Brief Description"
                     fullWidth
-                    onChange={handleChangeLocation('crime_explanation')}
+                    onChange={handleChangeRadio('crime_explanation')}
                     defaultValue={values.crime_explanation}
                     className={classes.textField}
                     margin="normal"
@@ -242,50 +245,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     focused
                   />
                   </Grid>
-              </RadioGroup>
-          </FormControl>
-      
-        
-
-
-             {/* <div>
-               <h4> <b>Location Details (Optional)</b></h4>
-                <FormGroup row>
-                 <FormControlLabel
-                  control={
-                    <Checkbox checked={values.useBackDoor} onChange={handleChangeUseBackDoor()} value="Use Back Door" color="primary" />
-                  }
-                  label="Use Back Door"
-                 />
-                 
-                 <FormControlLabel
-                  control={
-                    <Checkbox checked={values.mealProvided} onChange={handleChangeMealProvided()} value="Meal Provided" color="primary" />
-                  }
-                  label="Meal Provided"
-                 />
-                </FormGroup>
-              </div> */}
-           
-            {/* <div>
-            <h4> <b>Additional Location Details (Optional)</b></h4>
-              <TextField
-                id="login1-password"
-                label="Additional Location Details (Optional)"
-                fullWidth
-                margin="normal"
-                variant="outlined"
-                multiline
-                rowsMax="6"
-                autoComplete="off"
-                onChange={handleChangeLocation('additional_location_details')}
-                defaultValue={values.additional_location_details}
-                className={classes.textField}
-              />
-              
-            </div> */}
-            
-
+            </FormControl> :null }
           <br />
           <br />
 

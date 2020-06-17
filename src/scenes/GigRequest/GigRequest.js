@@ -57,7 +57,9 @@ function getSteps() {
 
 
 class GigRequest extends React.Component {
-  state = {
+  constructor() {
+    super();
+  this.state = {
     activeStep: 0,
     event_name:"",
     address: "",
@@ -75,37 +77,44 @@ class GigRequest extends React.Component {
     criminalRecord_check: "0",
     geneticRecord_check: "0",
     age_range: "0",
-    exercise_frequency: "0",
+    exercise_frequency: "",
     alcohol_frequency: "0",
     marijuana_frequency: "0",
-    tattoo_time: "0",
-    prescription_medication: "0",
+    tattoo_time: "",
+    tattoo_time_show: "",
+    prescription_medication: "",
     other_prescription_medication: "",
-    government_support: "0",
+    prescription_show: false,
+    government_support: "",
     reliable_income_source: "0",
     convicted_of_crime: "0",
+    convicted_of_crime_show: false,
     crime_explanation: "",
     recent_birthinfo: "0",
     child_survival: "0",
     miscarriage_info: "0",
     miscarriage_explanation: "",
+    miscarriage_info_show: "",
     breast_feeding: "0",
     breast_feeding_timePeriod: "0",
-    csection_requirement: "0",
+    breast_feeding_show: false,
+    csection_requirement: "",
+    csection_requirement_show: "",
     csection_frequency: "0",
     pregnancy_abnormalities: "0",
+    pregnancy_abnormalities_show: false,
     abnormality_description: "0",
-    children_custody: "0",
+    children_custody: "",
     children_custody_explanation: "",
-    child_reside: "0",
+    child_reside: "",
     child_reside_explanation: "",
     reliable_transportation: "0",
     smart_device_accessiblity: "0",
-    home_life_quality: "0",
+    home_life_quality: "",
     home_life_quality_explanation: "",
-    medical_history: "0",
+    medical_history: "",
     surrogate_gestational_carrier: "0",
-    current_agency: "0",
+    current_agency: "",
   
 
     
@@ -133,7 +142,11 @@ class GigRequest extends React.Component {
       booking_fee: 15
     }
     ]
+  }
+  this.handleChangeRadio = this.handleChangeRadio.bind(this);
   };
+
+      
 
 
   getStepContent = (step,values) => {
@@ -156,6 +169,8 @@ class GigRequest extends React.Component {
           handleChangeLocationDetails = {this.handleChangeLocationDetails}
           handleChangeUseBackDoor = {this.handleChangeUseBackDoor}
           handleChangeMealProvided = {this.handleChangeMealProvided}
+          handleChangePrescriptionRadio = {this.handleChangePrescriptionRadio}
+          handleChangeTattooTimeRadio = {this.handleChangeTattooTimeRadio}
       
     /> ;
       case 2:
@@ -166,6 +181,8 @@ class GigRequest extends React.Component {
           handleChangeLocationDetails = {this.handleChangeLocationDetails}
           handleChangeUseBackDoor = {this.handleChangeUseBackDoor}
           handleChangeMealProvided = {this.handleChangeMealProvided}
+          handleChangeConvictedofCrimeRadio = {this.handleChangeConvictedofCrimeRadio}
+        
     /> ;
       case 3:
       return  <PreviousPregnanciesForm
@@ -175,6 +192,10 @@ class GigRequest extends React.Component {
           handleChangeLocationDetails = {this.handleChangeLocationDetails}
           handleChangeUseBackDoor = {this.handleChangeUseBackDoor}
           handleChangeMealProvided = {this.handleChangeMealProvided}
+          handleChangeMiscarriageRadio={this.handleChangeMiscarriageRadio}
+          handleChangeBreastFeedingRadio = {this.handleChangeBreastFeedingRadio}
+          handleChangeCsectionRequirementRadio = {this.handleChangeCsectionRequirementRadio}
+          handleChangePregnancyAbnormalitiesRadio = {this.handleChangePregnancyAbnormalitiesRadio}
     /> ;
       case 4:
       return  <HomeLifeForm
@@ -209,7 +230,7 @@ class GigRequest extends React.Component {
     const { activeStep } = this.state;
 
     //Handle sending data to backend
-   
+    
     this.setState({
       activeStep: activeStep + 1,
     });
@@ -223,6 +244,37 @@ class GigRequest extends React.Component {
     console.log(this.state.additional_location_details);
     console.log(this.state.us_residence);
     console.log(this.state.birth);
+    console.log(this.state.tobacco_products_use);
+    console.log(this.state.drug_use);
+    console.log(this.state.injections_use);
+    console.log(this.state.doctors_orders);
+    console.log(this.state.criminalRecord_check);
+    console.log(this.state.geneticRecord_check);
+    console.log(this.state.exercise_frequency);
+    console.log(this.state.age_range);
+    console.log(this.state.alcohol_frequency);
+    console.log(this.state.marijuana_frequency);
+    console.log(this.state.tattoo_time);
+    console.log(this.state.prescription_medication);
+    console.log(this.state.government_support);
+    console.log(this.state.convicted_of_crime);
+    console.log(this.state.reliable_income_source);
+    console.log(this.state.recent_birthinfo);
+    console.log(this.state.child_survival);
+    console.log(this.state.miscarriage_info);
+    console.log(this.state.breast_feeding);
+    console.log(this.state.csection_requirement)
+    console.log(this.state.csection_frequency);
+    console.log(this.state.pregnancy_abnormalities);
+    console.log(this.state.children_custody);
+    console.log(this.state.child_reside);
+    console.log(this.state.reliable_transportation);
+    console.log(this.state.smart_device_accessiblity);
+    console.log(this.state.home_life_quality);
+    console.log(this.state.medical_history);
+    console.log(this.state.surrogate_gestational_carrier);
+    console.log(this.state.current_agency);
+
     console.log(parseInt(this.state.us_residence) + parseInt(this.state.birth));
     console.log(parseInt(this.state.birth) + parseInt(this.state.us_residence) + parseInt (this.state.tobacco_products_use) + parseInt(this.state.drug_use) + parseInt(this.state.injections_use) + parseInt(this.state.doctors_orders) + parseInt(this.state.criminalRecord_check) + parseInt(this.state.geneticRecord_check)+ parseInt(this.state.age_range) + parseInt(this.state.exercise_frequency) + parseInt(this.state.alcohol_frequency) + parseInt(this.state.marijuana_frequency) + parseInt(this.state.tattoo_time) + parseInt(this.state.prescription_medication) + parseInt(this.state.government_support) + parseInt(this.state.reliable_income_source) + parseInt(this.state.convicted_of_crime) + parseInt(this.state.recent_birthinfo) + parseInt(this.state.child_survival) + parseInt(this.state.miscarriage_info) + parseInt(this.state.breast_feeding) +parseInt(this.state.breast_feeding_timePeriod) +parseInt(this.state.csection_requirement) +parseInt(this.state.csection_frequency) + parseInt(this.state.pregnancy_abnormalities) +parseInt(this.state.children_custody) + parseInt(this.state.child_reside) + parseInt(this.state.reliable_transportation) + parseInt(this.state.smart_device_accessibility) + parseInt(this.state.home_life_quality) + parseInt(this.state.medical_history) + parseInt(this.state.surrogate_gestational_carrier) + parseInt(this.state.current_agency))
     
@@ -360,6 +412,7 @@ class GigRequest extends React.Component {
   };
 
   handleChangeRadio = input => e => {
+    e.preventDefault();
     this.setState({ [input]: e.target.value });
   };
 
@@ -402,9 +455,6 @@ class GigRequest extends React.Component {
   };
 
 
-
-
-
   
 
 
@@ -430,6 +480,122 @@ class GigRequest extends React.Component {
     console.log("HERERERER")
   }
 
+  // handleChangePrescriptionRadio = input => e => {
+  //   const ref = this;
+  //   const run = async () => {
+    
+  //   const stateChange = await ref.setState({[input]:e.target.value})
+  //   if(this.prescription_medication === 0) {
+  //     ref.setState({prescription_show: true}
+  //   }
+  // }
+  // }
+
+  handleChangePrescriptionRadio = input => e => {
+    if (e.target.value === '15') {
+      this.setState({[input]:e.target.value})
+      this.setState({prescription_show: false})
+    } else {
+      this.setState({[input]:e.target.value});
+      this.setState({prescription_show: true})
+    }
+    console.log(e.target.value);
+  }
+
+  handleChangeTattooTimeRadio = input => e => {
+    if (e.target.value === '00') {
+      this.setState({[input]:e.target.value})
+      this.setState({tattoo_time_show: true})
+    } else {
+      this.setState({[input]:e.target.value});
+      this.setState({tattoo_time_show: false})
+    }
+    console.log(e.target.value);
+  }
+
+  handleChangeConvictedofCrimeRadio = input => e => {
+    if (e.target.value === '5') {
+      this.setState({[input]:e.target.value})
+      this.setState({convicted_of_crime_show: true})
+    } else {
+      this.setState({[input]:e.target.value});
+      this.setState({convicted_of_crime_show: false})
+    }
+    console.log(e.target.value);
+  }
+
+  handleChangeMiscarriageRadio = input => e => {
+    if (e.target.value === '5') {
+      this.setState({[input]:e.target.value})
+      this.setState({miscarriage_info_show: true})
+    } else {
+      this.setState({[input]:e.target.value});
+      this.setState({miscarriage_info_show: false})
+    }
+    console.log(e.target.value);
+  }
+
+  handleChangeBreastFeedingRadio = input => e => {
+    if (e.target.value === '00') {
+      this.setState({[input]:e.target.value})
+      this.setState({breast_feeding_show: true})
+    } else {
+      this.setState({[input]:e.target.value});
+      this.setState({breast_feeding_show: false})
+    }
+    console.log(e.target.value);
+  }
+
+  handleChangeCsectionRequirementRadio = input => e => {
+    if (e.target.value === '0') {
+      this.setState({[input]:e.target.value})
+      this.setState({csection_requirement_show: true})
+    } else {
+      this.setState({[input]:e.target.value});
+      this.setState({csection_requirement_show: false})
+    }
+    console.log(e.target.value);
+  }
+
+  handleChangePregnancyAbnormalitiesRadio = input => e => {
+    if (e.target.value === '0') {
+      this.setState({[input]:e.target.value})
+      this.setState({pregnancy_abnormalities_show: true})
+    } else {
+      this.setState({[input]:e.target.value});
+      this.setState({pregnancy_abnormalities_show: false})
+    }
+    console.log(e.target.value);
+  }
+
+  
+
+  
+
+  
+
+  // handleChangePrescriptionRadio(2).then((data) => {  
+  //   if(this.state.prescription_medication === 0){
+  //     this.setState({prescription_show: true})
+  //     } 
+  // }).catch((error) => {  
+  //   console.log('Error from processDataAsycn() with async( When promise gets rejected ): ' + error);  
+  // });
+
+
+  // handleButtonClick = () => {
+  //   const fetchUserEmail = async () => {
+  //     const response = await fetch("/emails");
+  //     const { email } = await response.json();
+  //     this.setState({
+  //       email
+  //     });
+  //   };
+  //   fetchUserEmail();
+  // };
+
+
+
 
 
 
@@ -442,8 +608,8 @@ class GigRequest extends React.Component {
     const { activeStep } = this.state;
 
    
-    const {address,parking,useBackdoor,mealProvided,additional_location_details,position,date,start_time,end_time,quantity,instructions,required_attire,required_accessories,onsite_contact_name,onsite_contact_number,additional_attire_details,payment_method,positions} = this.state;
-    const values = { address,parking,useBackdoor,mealProvided,additional_location_details,position,date,start_time,end_time,quantity,instructions,required_attire,required_accessories,onsite_contact_name,onsite_contact_number,additional_attire_details,payment_method,positions};
+    const {us_residence,tobacco_product_use,drug_use,injection_use,doctors_orders,criminalRecord_check,geneticRecord_check,age_range,exercise_frequency,alcohol_frequency,marijuana_frequency,tattoo_time,prescription_medication,other_prescription_medication,government_support,reliable_income_source,convicted_of_crime,crime_explanation,recent_birthinfo,child_survival,miscarriage_info,miscarriage_explanation,breast_feeding,breast_feeding_timePeriod,csection_requirement,csection_frequency,pregnancy_abnormalitites,abnormality_description,children_custody,children_custody_explanation,child_reside,child_reside_explanation,reliable_transportation,smart_device_accessibility,home_life_quality,home_life_quality_explanation,medical_history,surrogate_gestational_carrier,current_agency,prescription_show,tattoo_time_show,convicted_of_crime_show,miscarriage_info_show,breast_feeding_show,csection_requirement_show,pregnancy_abnormalities_show} = this.state;
+    const values = {us_residence,tobacco_product_use,drug_use,injection_use,doctors_orders,criminalRecord_check,geneticRecord_check,age_range,exercise_frequency,alcohol_frequency,marijuana_frequency,tattoo_time,prescription_medication,other_prescription_medication,government_support,reliable_income_source,convicted_of_crime,crime_explanation,recent_birthinfo,child_survival,miscarriage_info,miscarriage_explanation,breast_feeding,breast_feeding_timePeriod,csection_requirement,csection_frequency,pregnancy_abnormalitites,abnormality_description,children_custody,children_custody_explanation,child_reside,child_reside_explanation,reliable_transportation,smart_device_accessibility,home_life_quality,home_life_quality_explanation,medical_history,surrogate_gestational_carrier,current_agency,prescription_show,tattoo_time_show,convicted_of_crime_show,miscarriage_info_show,breast_feeding_show,csection_requirement_show,pregnancy_abnormalities_show};
 
     return (
       <Fragment>

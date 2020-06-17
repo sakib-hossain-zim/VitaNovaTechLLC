@@ -84,15 +84,13 @@ export default withStyles(styles) (class NormalForm extends React.Component {
     // this.props.history.push(DEMO.home2);
   }
   render() {
-    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor} = this.props;
+    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor,handleChangePrescriptionRadio,handleChangeTattooTimeRadio} = this.props;
     
     return (
 
 
       <Fragment>
-      <Typography variant="h6" gutterBottom>
-         <h5 color> <b> Name  </b> </h5>
-        </Typography>
+      
               
         <form onSubmit={this.handleSubmit} className="form-v1">
 
@@ -321,7 +319,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                   name="tattoo_time"
                   className={classes.group}
                   value={values.tattoo_time}
-                  onChange={handleChangeRadio('tattoo_time')}
+                  onChange={handleChangeTattooTimeRadio('tattoo_time')}
                 >
                   <FormControlLabel
                     value="15"
@@ -329,22 +327,39 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     label="No"
                   />
                   <FormControlLabel
-                    value="0"
+                    value="00"
                     control={<Radio color="primary" />}
-                    label=">1year"
-                  />
-                  <FormControlLabel
-                    value="10"
-                    control={<Radio color="primary" />}
-                    label="1-2 years"
-                  />
-                  <FormControlLabel
-                    value="12"
-                    control={<Radio color="primary" />}
-                    label="3+ years"
+                    label="Yes"
                   />
               </RadioGroup>
           </FormControl>
+          {values.tattoo_time_show?  
+            <FormControl component="fieldset" className={classes.formControl}>
+            <h4> Please select from the following options: </h4> 
+                   <RadioGroup
+                   aria-label="tattoo_time"
+                   name="tattoo_time"
+                   className={classes.group}
+                   value={values.tattoo_time}
+                   onChange={handleChangeRadio('tattoo_time')}
+                 >
+                      <FormControlLabel
+                        value="0"
+                        control={<Radio color="primary" />}
+                        label=">1year"
+                      />
+                      <FormControlLabel
+                        value="10"
+                        control={<Radio color="primary" />}
+                        label="1-2 years"
+                      />
+                      <FormControlLabel
+                        value="12"
+                        control={<Radio color="primary" />}
+                        label="3+ years"
+                      />
+                      </RadioGroup> </FormControl>:null
+            }
       <br/>
             <FormControl component="fieldset" className={classes.formControl}>
                     <h4> <b>Are you currently on prescription medication (this does not include anti-biotics) ?</b></h4>
@@ -353,81 +368,57 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     name="prescription_medication"
                     className={classes.group}
                     value={values.prescription_medication}
-                    onChange={handleChangeRadio('prescription_medication')}
+                    onChange={handleChangePrescriptionRadio('prescription_medication')}
                   >
                     <FormControlLabel
                       value="15"
                       control={<Radio color="primary" />}
                       label="No"
                     />
-                    <h3> If yes, please select one of the following options </h3>
                     <FormControlLabel
-                      value="015"
-                      control={<Radio color="primary" />}
-                      label="birth_control"
-                    />
-                     <FormControlLabel
                       value="0"
                       control={<Radio color="primary" />}
-                      label="other"
+                      label="Yes"
                     />
+                  
                 </RadioGroup>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    id="required"
-                    label="Other prescription medication"
-                    fullWidth
-                    onChange={handleChangeLocation('other_prescription_medication')}
-                    defaultValue={values.other_prescription_medication}
-                    className={classes.textField}
-                    margin="normal"
-                    variant="outlined"
-                    focused
-                  />
-               </Grid>
-            </FormControl>
-            
-
-
-             {/* <div>
-               <h4> <b>Location Details (Optional)</b></h4>
-                <FormGroup row>
-                 <FormControlLabel
-                  control={
-                    <Checkbox checked={values.useBackDoor} onChange={handleChangeUseBackDoor()} value="Use Back Door" color="primary" />
-                  }
-                  label="Use Back Door"
-                 />
-                 
-                 <FormControlLabel
-                  control={
-                    <Checkbox checked={values.mealProvided} onChange={handleChangeMealProvided()} value="Meal Provided" color="primary" />
-                  }
-                  label="Meal Provided"
-                 />
-                </FormGroup>
-              </div> */}
-           
-            {/* <div>
-            <h4> <b>Additional Location Details (Optional)</b></h4>
-              <TextField
-                id="login1-password"
-                label="Additional Location Details (Optional)"
-                fullWidth
-                margin="normal"
-                variant="outlined"
-                multiline
-                rowsMax="6"
-                autoComplete="off"
-                onChange={handleChangeLocation('additional_location_details')}
-                defaultValue={values.additional_location_details}
-                className={classes.textField}
-              />
               
-            </div> */}
-            
-
+            </FormControl>
+            {values.prescription_show? 
+            <FormControl component="fieldset" className={classes.formControl}>
+                  <h4> Please select from the following options: </h4> 
+                         <RadioGroup
+                         aria-label="prescription_med"
+                         name="prescription_med"
+                         className={classes.group}
+                         value={values.prescription_medication}
+                         onChange={handleChangeRadio('prescription_medication')}
+                       >
+                         <FormControlLabel
+                           value="015"
+                           control={<Radio color="primary" />}
+                           label="birth_control"
+                         />
+                         <FormControlLabel
+                           value="00"
+                           control={<Radio color="primary" />}
+                           label="other"
+                         />
+                         <Grid item xs={12}>
+                       <TextField
+                         required
+                         id="required"
+                         label="Other prescription medication"
+                         fullWidth
+                         onChange={handleChangeRadio('other_prescription_medication')}
+                         defaultValue={values.other_prescription_medication}
+                         className={classes.textField}
+                         margin="normal"
+                         variant="outlined"
+                         focused
+                       />
+                    </Grid>
+           </RadioGroup>  </FormControl> :null }
           <br />
           <br />
 
