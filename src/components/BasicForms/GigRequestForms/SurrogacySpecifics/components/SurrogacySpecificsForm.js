@@ -90,9 +90,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
 
 
       <Fragment>
-      <Typography variant="h6" gutterBottom>
-         <h5 color> <b> Name  </b> </h5>
-        </Typography>
+  
               
         <form onSubmit={this.handleSubmit} className="form-v1">
 
@@ -165,6 +163,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
 
             
         <FormControl component="fieldset" className={classes.formControl}>
+               <h3 style={{color: "red"}}>{values.medical_history_error}</h3>
                <h4> <b>Will you provide all your medical history (relevant to being a surrogate) </b></h4>
             <RadioGroup
               aria-label="medical_history"
@@ -179,7 +178,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 label="Yes"
               />
               <FormControlLabel
-                value= "0"
+                value= "00"
                 control={<Radio color="primary" />}
                 label="No"
               />
@@ -187,6 +186,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
         <FormControl component="fieldset" className={classes.formControl}>
+                <h3 style={{color: "red"}}>{values.surrogate_gestational_carrier_error}</h3>
                 <h4> <b>Have you been a surrogate, or gestational carrier before?</b></h4>
               <RadioGroup
                 aria-label="surrogate_gestational_carrier"
@@ -209,6 +209,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
           <FormControl component="fieldset" className={classes.formControl}>
+                  <h3 style={{color: "red"}}>{values.current_agency_error}</h3>
                   <h4> <b>Are you with an agency currently?</b></h4>
                 <RadioGroup
                   aria-label="current_agency"
@@ -223,7 +224,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     label="No"
                   />
                   <FormControlLabel
-                    value="0"
+                    value="000"
                     control={<Radio color="primary" />}
                     label="Yes"
                   />

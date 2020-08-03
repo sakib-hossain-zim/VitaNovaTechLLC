@@ -165,14 +165,15 @@ export default withStyles(styles) (class NormalForm extends React.Component {
 
             
         <FormControl component="fieldset" className={classes.formControl}>
+               <h3 style={{color: "red"}}>{values.birth_error}</h3>
                <h4> <b>Have you given birth before?</b></h4>
             <RadioGroup
               aria-label="Birth"
-              name="parking2"
+              name="birth"
               className={classes.group}
               value={values.birth}
               onChange={handleChangeRadio('birth')}
-              defaultValue= {values.birth}
+              defaultValue= {values.birth} 
             >
               <FormControlLabel
                 value= "10"
@@ -188,6 +189,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
         <FormControl component="fieldset" className={classes.formControl}>
+                <h3 style={{color: "red"}}>{values.us_residence_error}</h3>
                 <h4> <b>Do you reside in the US?</b></h4>
               <RadioGroup
                 aria-label="US_residence"
@@ -210,6 +212,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
           <FormControl component="fieldset" className={classes.formControl}>
+                  <h3 style={{color: "red"}}>{values.tobacco_products_use_error}</h3>
                   <h4> <b>Do you use tobacco products?</b></h4>
                 <RadioGroup
                   aria-label="tobacco_products_use"
@@ -232,6 +235,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
           </FormControl>
       <br/>
             <FormControl component="fieldset" className={classes.formControl}>
+                    <h3 style={{color: "red"}}>{values.drug_use_error}</h3>
                     <h4> <b>Do you/have use/d recreational drugs [ex but not limited to cocaine,meth,heroine] ?</b></h4>
                   <RadioGroup
                     aria-label="drug_use"
@@ -254,6 +258,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             </FormControl>
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
+                    <h3 style={{color: "red"}}>{values.injections_use_error}</h3>
                     <h4> <b>Are you comfortable taking medical injections and prescriptions?</b></h4>
                   <RadioGroup
                     aria-label="injections_use"
@@ -276,6 +281,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             </FormControl>
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
+                    <h3 style={{color: "red"}}>{values.doctors_orders_error}</h3>
                     <h4> <b>Are you comfortable following a doctor's orders [inluding but not limited to medically necessary abortion,diet,exercise chages] ?</b></h4>
                   <RadioGroup
                     aria-label="doctors_orders"
@@ -298,6 +304,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             </FormControl>
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
+                    <h3 style={{color: "red"}}>{values.criminalRecord_check_error}</h3>
                     <h4> <b>Will you complete a criminal record check ?</b></h4>
                   <RadioGroup
                     aria-label="criminalRecord_check"
@@ -320,6 +327,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             </FormControl>
             <br/>
             <FormControl component="fieldset" required = "true" className={classes.formControl}>
+                    <h3 style={{color: "red"}}>{values.geneticRecord_check_error}</h3>
                     <h4> <b>Will you take genetic and other record check [cost will be covered] ?</b></h4>
                   <RadioGroup
                     aria-label="geneticRecord_check"

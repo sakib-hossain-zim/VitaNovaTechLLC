@@ -163,6 +163,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
 
             
         <FormControl component="fieldset" className={classes.formControl}>
+               <h3 style={{color: "red"}}>{values.government_support_error}</h3>
                <h4> <b>Are you currently on welfare or any other government assistance including disability?</b></h4>
             <RadioGroup
               aria-label="government_support"
@@ -177,7 +178,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 label="No"
               />
               <FormControlLabel
-                value= "0"
+                value= "00000"
                 control={<Radio color="primary" />}
                 label="Yes"
               />
@@ -185,12 +186,13 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
         <FormControl component="fieldset" className={classes.formControl}>
+                <h3 style={{color: "red"}}>{values.reliable_income_source_error}</h3>
                 <h4> <b>Do you have a reliable source of income (be it a job, spouse investments etc)</b></h4>
               <RadioGroup
                 aria-label="reliable_income_source"
                 name="reliable_income_source"
                 className={classes.group}
-                value={values.reliable_income_resource}
+                value={values.reliable_income_source}
                 onChange={handleChangeRadio('reliable_income_source')}
               >
                 <FormControlLabel
@@ -207,6 +209,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
           <FormControl component="fieldset" className={classes.formControl}>
+                  <h3 style={{color: "red"}}>{values.convicted_of_crime_error}</h3>
                   <h4> <b>Have you ever been charged or convicted of crime?</b></h4>
                 <RadioGroup
                   aria-label="convicted_of_crime"

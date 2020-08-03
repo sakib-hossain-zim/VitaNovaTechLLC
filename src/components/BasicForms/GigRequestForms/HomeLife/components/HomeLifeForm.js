@@ -92,6 +92,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <Fragment>
         <form onSubmit={this.handleSubmit} className="form-v1">            
         <FormControl component="fieldset" className={classes.formControl}>
+               <h3 style={{color: "red"}}>{values.children_custody_error}</h3>
                <h4> <b>Do you currently have custody (full or half) of your children? </b></h4>
             <RadioGroup
               aria-label="children_custody"
@@ -106,7 +107,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 label="Yes"
               />
               <FormControlLabel
-                value= "0"
+                value= "000"
                 control={<Radio color="primary" />}
                 label="No"
               />
@@ -128,6 +129,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
         <FormControl component="fieldset" className={classes.formControl}>
+                <h3 style={{color: "red"}}>{values.child_reside_error}</h3>
                 <h4> <b>Do your children reside with you?</b></h4>
               <RadioGroup
                 aria-label="child_reside"
@@ -142,7 +144,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                   label="Yes"
                 />
                 <FormControlLabel
-                  value= "0"
+                  value= "0000"
                   control={<Radio color="primary" />}
                   label="No"
                 />
@@ -164,6 +166,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
           <FormControl component="fieldset" className={classes.formControl}>
+                  <h3 style={{color: "red"}}>{values.reliable_transportation_error}</h3>
                   <h4> <b>Do you have reliable transportation/ Can you get access to reliable transportation?</b></h4>
                 <RadioGroup
                   aria-label="reliable_transportation"
@@ -186,6 +189,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
           </FormControl>
       <br/>
             <FormControl component="fieldset" className={classes.formControl}>
+                    <h3 style={{color: "red"}}>{values.smart_device_accessibility_error}</h3>
                     <h4> <b>Do you have, or can you get access to a smart device for video calling? (laptop, tablet, cellphone with camera)</b></h4>
                   <RadioGroup
                     aria-label="smart_device_accessibility"
@@ -205,7 +209,10 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                       label="No"
                     />
                 </RadioGroup>
-                <h3> How is life at home? </h3>
+                </FormControl>
+            <FormControl component="fieldset" className={classes.formControl}>
+                <h3 style={{color: "red"}}>{values.home_life_quality_error}</h3>
+                <h4><b> How is life at home? </b></h4>
                 <RadioGroup
                     aria-label="home_life_quality"
                     name="home_life_quality"

@@ -93,6 +93,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="form-v1">
             
         <FormControl component="fieldset" className={classes.formControl}>
+               <h3 style={{color: "red"}}>{values.recent_birthinfo_error}</h3>
                <h4> <b>How recently did you give birth? </b></h4>
             <RadioGroup
               aria-label="recent_birthinfo"
@@ -121,6 +122,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <br/>
 
         <FormControl component="fieldset" className={classes.formControl}>
+                <h3 style={{color: "red"}}>{values.child_survival_error}</h3>
                 <h4> <b>Did the child survive?</b></h4>
               <RadioGroup
                 aria-label="child_survival"
@@ -143,6 +145,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
           <FormControl component="fieldset" className={classes.formControl}>
+                  <h3 style={{color: "red"}}>{values.miscarriage_info_error}</h3>
                   <h4> <b>Have you ever miscarried? If yes, please provide the week at which the event occurred, and if you chose to, a story behind it (car accident, medically necessary, etc.)</b></h4>
                 <RadioGroup
                   aria-label="miscarriage_info"
@@ -181,6 +184,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         }
       <br/>
             <FormControl component="fieldset" className={classes.formControl}>
+                    <h3 style={{color: "red"}}>{values.breast_feeding_error}</h3>
                     <h4> <b>Are you breast-feeding?</b></h4>
                   <RadioGroup
                     aria-label="breast_feeding"
@@ -226,6 +230,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
           }
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
+                    <h3 style={{color: "red"}}>{values.csection_requirement_error}</h3>
                     <h4> <b>Did you have or require a C-section (ceasarian section) to give birth?</b></h4>
                   <RadioGroup
                     aria-label="csection_requirement"
@@ -240,7 +245,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                       label="No"
                     />
                     <FormControlLabel
-                      value="0"
+                      value="00000"
                       control={<Radio color="primary" />}
                       label="Yes"
                     />
@@ -274,6 +279,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 </RadioGroup> </FormControl>: null}
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
+                    <h3 style={{color: "red"}}>{values.pregnancy_abnormalities_error}</h3>
                     <h4> <b>Did you experience any abnormalities during your pregnancy</b></h4>
                   <RadioGroup
                     aria-label="pregnancy_abnormalities"
@@ -288,7 +294,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                       label="No"
                     />
                     <FormControlLabel
-                      value="0"
+                      value="0000000"
                       control={<Radio color="primary" />}
                       label="Yes"
                     />

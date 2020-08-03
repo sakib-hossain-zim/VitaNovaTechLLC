@@ -163,6 +163,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
 
             
         <FormControl component="fieldset" className={classes.formControl}>
+               <h3 style={{color: "red"}}>{values.age_range_error}</h3>
                <h4> <b>Age Range?</b></h4>
             <RadioGroup
               aria-label="Age Range"
@@ -205,6 +206,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
         <FormControl component="fieldset" className={classes.formControl}>
+                <h3 style={{color: "red"}}>{values.exercise_frequency_error}</h3>
                 <h4> <b> Activity Level (30 mins of exercise, including spin, run, HIIT, yoga, gym, swim</b></h4>
               <RadioGroup
                 aria-label="exercise_frequency"
@@ -229,12 +231,12 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                   label="4-5/wk"
                 />
                 <FormControlLabel
-                  value= "010"
+                  value= "0010"
                   control={<Radio color="primary" />}
                   label="6+/wk"
                 />
                 <FormControlLabel
-                  value= "0"
+                  value= "0000"
                   control={<Radio color="primary" />}
                   label="none"
                 />
@@ -242,6 +244,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
       <FormControl component="fieldset" className={classes.formControl}>
+                <h3 style={{color: "red"}}>{values.alcohol_frequency_error}</h3>
                 <h4> <b> Alcohol Consumption (1 drink is equivalent to 6 oz of wine, 1 beer, 1 oz cocktail</b></h4>
               <RadioGroup
                 aria-label="alcohol_frequency"
@@ -280,6 +283,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <br/>
       <br/>
       <FormControl component="fieldset" className={classes.formControl}>
+                <h3 style={{color: "red"}}>{values.marijuana_frequency_error}</h3>
                 <h4> <b> Marijuana Consumption (including but not limited to, edibles,pipes, vapes, buds)</b></h4>
               <RadioGroup
                 aria-label="marijuana_frequency"
@@ -313,6 +317,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
         </FormControl>
       <br/>
           <FormControl component="fieldset" className={classes.formControl}>
+                  <h3 style={{color: "red"}}>{values.tattoo_time_error}</h3>
                   <h4> <b>Do you have any tattoos? If so, how recent ? </b></h4>
                 <RadioGroup
                   aria-label="tattoo_time"
@@ -362,6 +367,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             }
       <br/>
             <FormControl component="fieldset" className={classes.formControl}>
+                    <h3 style={{color: "red"}}>{values.prescription_medication_error}</h3>
                     <h4> <b>Are you currently on prescription medication (this does not include anti-biotics) ?</b></h4>
                   <RadioGroup
                     aria-label="prescription_medication"
@@ -376,7 +382,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                       label="No"
                     />
                     <FormControlLabel
-                      value="0"
+                      value="000"
                       control={<Radio color="primary" />}
                       label="Yes"
                     />
