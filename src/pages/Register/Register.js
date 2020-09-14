@@ -8,8 +8,6 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import BookingForm_Shifts from '../../components/BasicForms/GigRequestForms/BookingForm_Shifts';
-import BookingForm_Instruction from '../../components/BasicForms/GigRequestForms/BookingForm_Instruction';
 import Booking_Confirmation from '../../components/BasicForms/GigRequestForms/Booking_Confirmation';
 
 
@@ -72,20 +70,20 @@ class Register extends React.Component {
     password: "",
     phone: "",
 
-    
+
 
   };
 
 
 
-  
+
 
   handleChange = (input) => e => {
     this.setState({[input]: e.target.value});
   }
 
 
- 
+
 
 
   handleSubmit = () => {
@@ -105,13 +103,13 @@ class Register extends React.Component {
 
     fetch("http://app.patternjobs.com/api/v1/users", {
         method: "POST",
-        headers: { 
+        headers: {
           "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
-        
+
       },
         body: JSON.stringify(insert_data),
-        
+
       })
       .then(function(response) {
         if (response.status >= 400) {
@@ -125,25 +123,25 @@ class Register extends React.Component {
       .catch(function(err) {
         console.log(err);
       })
-  
+
 
 
     this.props.history.push('/Login',this.state)
-    
+
 
 
   };
 
-  
+
 
 
 
   render() {
-    
+
 
     const { classes } = this.props;
-   
-    
+
+
 
     return (
         <Container component="main" maxWidth="xs">
@@ -232,15 +230,15 @@ class Register extends React.Component {
               <Grid item>
                  <Link href="/Login" variant="body2">
                   Already have an account? Sign in
-                </Link> 
+                </Link>
               </Grid>
             </Grid>
           </form>
         </div>
-       
+
       </Container>
-        
-   
+
+
 
     );
   }
@@ -251,8 +249,3 @@ Register.propTypes = {
 };
 
 export default withStyles(styles)(Register);
-
-
-
-
-

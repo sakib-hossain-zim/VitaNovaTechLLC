@@ -210,7 +210,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <br/>
           <FormControl component="fieldset" className={classes.formControl}>
                   <h3 style={{color: "red"}}>{values.current_agency_error}</h3>
-                  <h4> <b>Are you with an agency currently?</b></h4>
+                  <h4> <b>Are you currently or have you ever been with an agency before</b></h4>
                 <RadioGroup
                   aria-label="current_agency"
                   name="current_agency"
@@ -219,14 +219,14 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                   onChange={handleChangeRadio('current_agency')}
                 >
                   <FormControlLabel
+                      value="000"
+                      control={<Radio color="primary" />}
+                      label="Yes"
+                    />
+                  <FormControlLabel
                     value="15"
                     control={<Radio color="primary" />}
                     label="No"
-                  />
-                  <FormControlLabel
-                    value="000"
-                    control={<Radio color="primary" />}
-                    label="Yes"
                   />
               </RadioGroup>
           </FormControl>

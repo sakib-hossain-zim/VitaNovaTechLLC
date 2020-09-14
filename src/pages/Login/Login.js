@@ -8,8 +8,6 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import BookingForm_Shifts from '../../components/BasicForms/GigRequestForms/BookingForm_Shifts';
-import BookingForm_Instruction from '../../components/BasicForms/GigRequestForms/BookingForm_Instruction';
 import Booking_Confirmation from '../../components/BasicForms/GigRequestForms/Booking_Confirmation';
 
 
@@ -70,20 +68,20 @@ class Login extends React.Component {
     email_address: "",
     password: "",
 
-    
+
 
   };
 
 
 
-  
+
 
   handleChange = (input) => e => {
     this.setState({[input]: e.target.value});
   }
 
 
- 
+
 
 
   handleSubmit = () => {
@@ -105,35 +103,35 @@ class Login extends React.Component {
         body: JSON.stringify(data)
       })
       .then(function(response){
-        
+
         const token = response.data.token;
         localStorage.setItem('jwtToken',token)
 
       })
       .then(
          self.props.history.push('/GigRequest',this.state)
-          
+
       )
-      
-  
+
+
 
 
     this.props.history.push('/GigRequest',this.state)
-    
+
 
 
   };
 
-  
+
 
 
 
   render() {
-    
+
 
     const { classes } = this.props;
-   
-    
+
+
 
     return (
         <Container component="main" maxWidth="xs">
@@ -187,10 +185,10 @@ class Login extends React.Component {
             </Button>
           </form>
         </div>
-       
+
       </Container>
-        
-   
+
+
 
     );
   }
@@ -201,8 +199,3 @@ Login.propTypes = {
 };
 
 export default withStyles(styles)(Login);
-
-
-
-
-

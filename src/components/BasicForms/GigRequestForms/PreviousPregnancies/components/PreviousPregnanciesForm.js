@@ -94,7 +94,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             
         <FormControl component="fieldset" className={classes.formControl}>
                <h3 style={{color: "red"}}>{values.recent_birthinfo_error}</h3>
-               <h4> <b>How recently did you give birth? </b></h4>
+               <h4> <b>How recently have you given birth?</b></h4>
             <RadioGroup
               aria-label="recent_birthinfo"
               name="recent_birthinfo"
@@ -105,17 +105,17 @@ export default withStyles(styles) (class NormalForm extends React.Component {
               <FormControlLabel
                 value= "10"
                 control={<Radio color="primary" />}
-                label=">1 year"
+                label="Less than 1 year"
               />
               <FormControlLabel
                 value= "15"
                 control={<Radio color="primary" />}
-                label=">5 years"
+                label="Greater than 1 year"
               />
               <FormControlLabel
                 value= "5"
                 control={<Radio color="primary" />}
-                label="5+ years"
+                label="Greater than 5 years"
               />
           </RadioGroup>
         </FormControl>
@@ -185,7 +185,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <br/>
             <FormControl component="fieldset" className={classes.formControl}>
                     <h3 style={{color: "red"}}>{values.breast_feeding_error}</h3>
-                    <h4> <b>Are you breast-feeding?</b></h4>
+                    <h4> <b>Are you currently breast-feeding?</b></h4>
                   <RadioGroup
                     aria-label="breast_feeding"
                     name="breast_feeding"
@@ -219,12 +219,12 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                   <FormControlLabel
                     value="15"
                     control={<Radio color="primary" />}
-                    label=">6 months"
+                    label="Less than 6 months"
                   />
                   <FormControlLabel
                     value="5"
                     control={<Radio color="primary" />}
-                    label="6+ months"
+                    label="Greater than 6 months"
                   />
               </RadioGroup> </FormControl>: null   
           }
@@ -313,17 +313,17 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     <FormControlLabel
                       value="10"
                       control={<Radio color="primary" />}
-                      label="hypertension"
+                      label="Hypertension"
                     />
                     <FormControlLabel
                       value="5"
                       control={<Radio color="primary" />}s
-                      label="preclampsia"
+                      label="Preclampsia"
                     />
                     <FormControlLabel
                       value="7"
                       control={<Radio color="primary" />}
-                      label="gestational_diabetes"
+                      label="Gestational diabetes"
                     />
                 </RadioGroup> </FormControl> : null
             }  

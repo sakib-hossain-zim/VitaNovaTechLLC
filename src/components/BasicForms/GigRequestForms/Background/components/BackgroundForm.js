@@ -187,7 +187,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <br/>
         <FormControl component="fieldset" className={classes.formControl}>
                 <h3 style={{color: "red"}}>{values.reliable_income_source_error}</h3>
-                <h4> <b>Do you have a reliable source of income (be it a job, spouse investments etc)</b></h4>
+                <h4> <b>Do you have a reliable source of income from, a job, spouse, investments, or other?</b></h4>
               <RadioGroup
                 aria-label="reliable_income_source"
                 name="reliable_income_source"
@@ -210,7 +210,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <br/>
           <FormControl component="fieldset" className={classes.formControl}>
                   <h3 style={{color: "red"}}>{values.convicted_of_crime_error}</h3>
-                  <h4> <b>Have you ever been charged or convicted of crime?</b></h4>
+                  <h4> <b>Have you ever been charged or convicted of a crime?</b></h4>
                 <RadioGroup
                   aria-label="convicted_of_crime"
                   name="convicted_of_crime"

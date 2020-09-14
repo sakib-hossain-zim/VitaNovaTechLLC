@@ -167,7 +167,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <br/>
           <FormControl component="fieldset" className={classes.formControl}>
                   <h3 style={{color: "red"}}>{values.reliable_transportation_error}</h3>
-                  <h4> <b>Do you have reliable transportation/ Can you get access to reliable transportation?</b></h4>
+                  <h4> <b>Do you have reliable transportation or can you get access to reliable transportation (car, bus, ride share, family etc.) to get to and from your doctor’s appointments?</b></h4>
                 <RadioGroup
                   aria-label="reliable_transportation"
                   name="reliable_transportation"
@@ -190,7 +190,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <br/>
             <FormControl component="fieldset" className={classes.formControl}>
                     <h3 style={{color: "red"}}>{values.smart_device_accessibility_error}</h3>
-                    <h4> <b>Do you have, or can you get access to a smart device for video calling? (laptop, tablet, cellphone with camera)</b></h4>
+                    <h4> <b>Do you have, or can you get access to a smart device (laptop, tablet, cellphone with camera, etc.) for video calling with the intended parents?</b></h4>
                   <RadioGroup
                     aria-label="smart_device_accessibility"
                     name="smart_device_accessibility"
@@ -233,12 +233,12 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     <FormControlLabel
                       value="7"
                       control={<Radio color="primary" />}
-                      label="A little stressful"
+                      label="A little stressful*"
                     />
                     <FormControlLabel
                       value="5"
                       control={<Radio color="primary" />}
-                      label="Very stressful"
+                      label="Very stressful*"
                     />
                 </RadioGroup>
                 <Grid item xs={12}>

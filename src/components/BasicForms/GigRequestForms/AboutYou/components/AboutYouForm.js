@@ -37,7 +37,7 @@ const styles = theme => ({
   },
   root: {
     display: 'flex',
-   
+
   },
   formControl: {
     margin: theme.spacing(3),
@@ -84,14 +84,14 @@ export default withStyles(styles) (class NormalForm extends React.Component {
     // this.props.history.push(DEMO.home2);
   }
   render() {
-    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor,handleChangePrescriptionRadio,handleChangeTattooTimeRadio} = this.props;
-    
+    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor,handleChangePrescriptionRadio,handleChangeTattooTimeRadio,handleChangeMarijuanaRadio} = this.props;
+
     return (
 
 
       <Fragment>
-      
-              
+
+
         <form onSubmit={this.handleSubmit} className="form-v1">
 
 
@@ -110,7 +110,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 focused
               />
                </Grid>
-         
+
              <Grid item xs={12}>
                 <TextField
                   required
@@ -144,7 +144,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 focused
               />
                </Grid>
-         
+
              <Grid item xs={12}>
                 <TextField
                   required
@@ -161,10 +161,10 @@ export default withStyles(styles) (class NormalForm extends React.Component {
               </Grid> */}
 
 
-            
+
         <FormControl component="fieldset" className={classes.formControl}>
                <h3 style={{color: "red"}}>{values.age_range_error}</h3>
-               <h4> <b>Age Range?</b></h4>
+               <h4> <b>Select your age range</b></h4>
             <RadioGroup
               aria-label="Age Range"
               name="age_range"
@@ -207,7 +207,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <br/>
         <FormControl component="fieldset" className={classes.formControl}>
                 <h3 style={{color: "red"}}>{values.exercise_frequency_error}</h3>
-                <h4> <b> Activity Level (30 mins of exercise, including spin, run, HIIT, yoga, gym, swim</b></h4>
+                <h4> <b>What is your weekly activity level (30 minutes of exercise including spin, running, HIIT, yoga, gym or swim)</b></h4>
               <RadioGroup
                 aria-label="exercise_frequency"
                 name="exercise_frequency"
@@ -218,34 +218,34 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 <FormControlLabel
                   value= "5"
                   control={<Radio color="primary" />}
-                  label="once/wk"
+                  label="Once per week"
                 />
                 <FormControlLabel
                   value= "15"
                   control={<Radio color="primary" />}
-                  label="2-3/wk"
+                  label="2-3 times per week"
                 />
                 <FormControlLabel
                   value= "10"
                   control={<Radio color="primary" />}
-                  label="4-5/wk"
+                  label="4-5 times per week"
                 />
                 <FormControlLabel
                   value= "0010"
                   control={<Radio color="primary" />}
-                  label="6+/wk"
+                  label="6+ times per week"
                 />
                 <FormControlLabel
                   value= "0000"
                   control={<Radio color="primary" />}
-                  label="none"
+                  label="None"
                 />
             </RadioGroup>
         </FormControl>
       <br/>
       <FormControl component="fieldset" className={classes.formControl}>
                 <h3 style={{color: "red"}}>{values.alcohol_frequency_error}</h3>
-                <h4> <b> Alcohol Consumption (1 drink is equivalent to 6 oz of wine, 1 beer, 1 oz cocktail</b></h4>
+                <h4> <b>What is your weekly consumption of alcohol? (1 drink is equivalent to 6oz of wine, 335mL of beer, or 1.5 oz hard liquor)</b></h4>
               <RadioGroup
                 aria-label="alcohol_frequency"
                 name="alcohol_frequency"
@@ -256,27 +256,27 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 <FormControlLabel
                   value= "15"
                   control={<Radio color="primary" />}
-                  label="No"
+                  label="None"
                 />
                 <FormControlLabel
                   value= "12"
                   control={<Radio color="primary" />}
-                  label="1-2/wk"
+                  label="1-2 drinks per week"
                 />
                 <FormControlLabel
                   value= "10"
                   control={<Radio color="primary" />}
-                  label="3-4/wk"
+                  label="3-4 drinks per week"
                 />
                 <FormControlLabel
                   value= "7"
                   control={<Radio color="primary" />}
-                  label="5-6/wk"
+                  label="5-6 drinks per week"
                 />
                 <FormControlLabel
                   value= "5"
                   control={<Radio color="primary" />}
-                  label="7+/wk"
+                  label="7+ drinks per week"
                 />
             </RadioGroup>
         </FormControl>
@@ -284,41 +284,57 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <br/>
       <FormControl component="fieldset" className={classes.formControl}>
                 <h3 style={{color: "red"}}>{values.marijuana_frequency_error}</h3>
-                <h4> <b> Marijuana Consumption (including but not limited to, edibles,pipes, vapes, buds)</b></h4>
+                <h4> <b>What is your marijuana consumption, including but not limited to, edibles, vaping, topicals?</b></h4>
               <RadioGroup
                 aria-label="marijuana_frequency"
                 name="marijuana_frequency"
                 className={classes.group}
                 value={values.marijuana_frequency}
-                onChange={handleChangeRadio('marijuana_frequency')}
+                onChange={handleChangeMarijuanaRadio('marijuana_frequency')}
               >
                 <FormControlLabel
                   value= "15"
                   control={<Radio color="primary" />}
                   label="No"
                 />
-                <h3> If yes, please select one of the following options </h3>
                 <FormControlLabel
-                  value= "7"
+                  value= "00"
                   control={<Radio color="primary" />}
-                  label="edibles"
-                />
-                <FormControlLabel
-                  value= "10"
-                  control={<Radio color="primary" />}
-                  label="topical/oils"
-                />
-                <FormControlLabel
-                  value= "5"
-                  control={<Radio color="primary" />}
-                  label="smoke/vape"
+                  label="Yes"
                 />
             </RadioGroup>
         </FormControl>
+        {values.marijuana_option_show?
+          <FormControl component="fieldset" className={classes.formControl}>
+          <h4> Please select from the following options: </h4>
+          <RadioGroup
+            aria-label="marijuana_option"
+            name="marijuana_option"
+            className={classes.group}
+            value={values.marijuana_option}
+            onChange={handleChangeRadio('marijuana_option')}
+          >
+            <FormControlLabel
+              value= "7"
+              control={<Radio color="primary" />}
+              label="Edibles"
+            />
+            <FormControlLabel
+              value= "10"
+              control={<Radio color="primary" />}
+              label="Topical/oils"
+            />
+            <FormControlLabel
+              value= "5"
+              control={<Radio color="primary" />}
+              label="Smoke and/or vaping"
+            />
+            </RadioGroup> </FormControl>:null
+        }
       <br/>
           <FormControl component="fieldset" className={classes.formControl}>
                   <h3 style={{color: "red"}}>{values.tattoo_time_error}</h3>
-                  <h4> <b>Do you have any tattoos? If so, how recent ? </b></h4>
+                  <h4> <b>Do you have any tattoos? If so, how recently ? </b></h4>
                 <RadioGroup
                   aria-label="tattoo_time"
                   name="tattoo_time"
@@ -338,15 +354,15 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                   />
               </RadioGroup>
           </FormControl>
-          {values.tattoo_time_show?  
+          {values.tattoo_time_show?
             <FormControl component="fieldset" className={classes.formControl}>
-            <h4> Please select from the following options: </h4> 
+            <h4> Please select from the following options: </h4>
                    <RadioGroup
-                   aria-label="tattoo_time"
-                   name="tattoo_time"
+                   aria-label="tattoo_duration"
+                   name="tattoo_duration"
                    className={classes.group}
-                   value={values.tattoo_time}
-                   onChange={handleChangeRadio('tattoo_time')}
+                   value={values.tattoo_duration}
+                   onChange={handleChangeRadio('tattoo_duration')}
                  >
                       <FormControlLabel
                         value="0"
@@ -386,24 +402,24 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                       control={<Radio color="primary" />}
                       label="Yes"
                     />
-                  
+
                 </RadioGroup>
-              
+
             </FormControl>
-            {values.prescription_show? 
+            {values.prescription_show?
             <FormControl component="fieldset" className={classes.formControl}>
-                  <h4> Please select from the following options: </h4> 
+                  <h4> Please select from the following options: </h4>
                          <RadioGroup
-                         aria-label="prescription_med"
-                         name="prescription_med"
+                         aria-label="prescription_medication_choice"
+                         name="prescription_medication_choice"
                          className={classes.group}
-                         value={values.prescription_medication}
-                         onChange={handleChangeRadio('prescription_medication')}
+                         value={values.prescription_medication_choice}
+                         onChange={handleChangeRadio('prescription_medication_choice')}
                        >
                          <FormControlLabel
                            value="015"
                            control={<Radio color="primary" />}
-                           label="birth_control"
+                           label="birth control"
                          />
                          <FormControlLabel
                            value="00"
@@ -428,19 +444,14 @@ export default withStyles(styles) (class NormalForm extends React.Component {
           <br />
           <br />
 
-        
+
         </form>
-        
-       
+
+
       </Fragment>
 
-      
+
     );
   }
 }
 )
-
-
-
-
-

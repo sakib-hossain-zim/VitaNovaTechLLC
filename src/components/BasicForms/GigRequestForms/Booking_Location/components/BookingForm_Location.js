@@ -37,7 +37,7 @@ const styles = theme => ({
   },
   root: {
     display: 'flex',
-   
+
   },
   formControl: {
     margin: theme.spacing(3),
@@ -85,7 +85,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
   }
   render() {
     const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor} = this.props;
-    
+
     return (
 
 
@@ -93,7 +93,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <Typography variant="h6" gutterBottom>
          <h5 color> <b> Name  </b> </h5>
         </Typography>
-              
+
         <form onSubmit={this.handleSubmit} className="form-v1">
 
 
@@ -109,10 +109,9 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 className={classes.textField}
                 margin="normal"
                 variant="outlined"
-                focused
               />
                </Grid>
-         
+
              <Grid item xs={12}>
                 <TextField
                   required
@@ -124,7 +123,6 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                   className={classes.textField}
                   margin="normal"
                   variant="outlined"
-                  focused
                 />
                </Grid>
 
@@ -143,10 +141,9 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 className={classes.textField}
                 margin="normal"
                 variant="outlined"
-                focused
               />
                </Grid>
-         
+
              <Grid item xs={12}>
                 <TextField
                   required
@@ -158,12 +155,11 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                   className={classes.textField}
                   margin="normal"
                   variant="outlined"
-                  focused
                 />
               </Grid>
 
 
-            
+
         <FormControl component="fieldset" className={classes.formControl}>
                <h3 style={{color: "red"}}>{values.birth_error}</h3>
                <h4> <b>Have you given birth before?</b></h4>
@@ -173,7 +169,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
               className={classes.group}
               value={values.birth}
               onChange={handleChangeRadio('birth')}
-              defaultValue= {values.birth} 
+              defaultValue= {values.birth}
             >
               <FormControlLabel
                 value= "10"
@@ -236,7 +232,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <br/>
             <FormControl component="fieldset" className={classes.formControl}>
                     <h3 style={{color: "red"}}>{values.drug_use_error}</h3>
-                    <h4> <b>Do you/have use/d recreational drugs [ex but not limited to cocaine,meth,heroine] ?</b></h4>
+                    <h4> <b>Do you or have you in the past used recreational drugs such as, but not limited to; cocaine, methamphetamines, heroine?</b></h4>
                   <RadioGroup
                     aria-label="drug_use"
                     name="drug_use"
@@ -259,7 +255,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
                     <h3 style={{color: "red"}}>{values.injections_use_error}</h3>
-                    <h4> <b>Are you comfortable taking medical injections and prescriptions?</b></h4>
+                    <h4> <b>Are you comfortable taking medical injections and/or prescriptions?</b></h4>
                   <RadioGroup
                     aria-label="injections_use"
                     name="injections_use"
@@ -282,7 +278,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
                     <h3 style={{color: "red"}}>{values.doctors_orders_error}</h3>
-                    <h4> <b>Are you comfortable following a doctor's orders [inluding but not limited to medically necessary abortion,diet,exercise chages] ?</b></h4>
+                    <h4> <b>Are you comfortable following a doctor’s orders including but not limited to; diet changes, exercise changes, medically necessary abortion?</b></h4>
                   <RadioGroup
                     aria-label="doctors_orders"
                     name="doctors_orders"
@@ -305,7 +301,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
                     <h3 style={{color: "red"}}>{values.criminalRecord_check_error}</h3>
-                    <h4> <b>Will you complete a criminal record check ?</b></h4>
+                    <h4> <b>Will you complete a criminal record check?</b></h4>
                   <RadioGroup
                     aria-label="criminalRecord_check"
                     name="criminalRecord_check"
@@ -328,7 +324,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             <br/>
             <FormControl component="fieldset" required = "true" className={classes.formControl}>
                     <h3 style={{color: "red"}}>{values.geneticRecord_check_error}</h3>
-                    <h4> <b>Will you take genetic and other record check [cost will be covered] ?</b></h4>
+                    <h4> <b>Will you take genetic and/or other record checks (the cost will be covered) ?</b></h4>
                   <RadioGroup
                     aria-label="geneticRecord_check"
                     name="geneticRecord_check"
@@ -336,8 +332,8 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     value={values.geneticRecord_check}
                     onChange={handleChangeRadio('geneticRecord_check')}
                     required = "true"
-                    
-              
+
+
                   >
                     <FormControlLabel
                       value="10"
@@ -348,7 +344,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                       value="400"
                       control={<Radio color="primary" />}
                       label="No"
-                    
+
                     />
                 </RadioGroup>
             </FormControl>
@@ -364,7 +360,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                   }
                   label="Use Back Door"
                  />
-                 
+
                  <FormControlLabel
                   control={
                     <Checkbox checked={values.mealProvided} onChange={handleChangeMealProvided()} value="Meal Provided" color="primary" />
@@ -373,7 +369,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                  />
                 </FormGroup>
               </div> */}
-           
+
             {/* <div>
             <h4> <b>Additional Location Details (Optional)</b></h4>
               <TextField
@@ -389,26 +385,21 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 defaultValue={values.additional_location_details}
                 className={classes.textField}
               />
-              
+
             </div> */}
-            
+
 
           <br />
           <br />
 
-        
+
         </form>
-        
-       
+
+
       </Fragment>
 
-      
+
     );
   }
 }
 )
-
-
-
-
-
