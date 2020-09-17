@@ -284,7 +284,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <br/>
       <FormControl component="fieldset" className={classes.formControl}>
                 <h3 style={{color: "red"}}>{values.marijuana_frequency_error}</h3>
-                <h4> <b>What is your marijuana consumption, including but not limited to, edibles, vaping, topicals?</b></h4>
+                <h4> <b>Do you consume marijauna, including but not limited to, edibles, vaping, topicals etc</b></h4>
               <RadioGroup
                 aria-label="marijuana_frequency"
                 name="marijuana_frequency"

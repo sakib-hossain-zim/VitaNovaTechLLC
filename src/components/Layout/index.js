@@ -32,8 +32,8 @@ import Container from '@material-ui/core/Container'
 
     root: {
       display: 'flex',
-     
-      
+
+
     },
     appBar: {
       zIndex: theme.zIndex.drawer + 1,
@@ -58,20 +58,20 @@ import Container from '@material-ui/core/Container'
     content: {
       flexGrow: 1,
       padding: theme.spacing(2),
-      
+
     },
-   
+
   }));
 
 
   const theme1 = createMuiTheme({
     palette: {
       primary:  {
-        main: '#673ab7'} 
-      
+        main: '#00c853'} 
+
     },
-      
-    
+
+
   });
 
 
@@ -96,7 +96,7 @@ export default  withStyles(styles) (class extends React.Component {
         color="primary"
       >
         <Toolbar>
-        
+
           <Typography variant="h6" noWrap>
             Vita Nova Technologies LLC
           </Typography>
@@ -112,13 +112,13 @@ export default  withStyles(styles) (class extends React.Component {
       <br />
       <br />
       <br />
-      
+
       <Container maxWidth="sm">
       <main className={classes.content}>
-      
+
         <div className={classes.toolbar} />
           {children}
-          
+
       </main>
       </Container>
     </div>

@@ -37,7 +37,7 @@ const styles = theme => ({
   },
   root: {
     display: 'flex',
-   
+
   },
   formControl: {
     margin: theme.spacing(3),
@@ -84,14 +84,14 @@ export default withStyles(styles) (class NormalForm extends React.Component {
     // this.props.history.push(DEMO.home2);
   }
   render() {
-    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor,handleChangeMiscarriageRadio,handleChangeBreastFeedingRadio,handleChangeCsectionRequirementRadio,handleChangePregnancyAbnormalitiesRadio} = this.props;
-    
+    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor,handleChangeMiscarriageRadio,handleChangeBreastFeedingRadio,handleChangeCsectionRequirementRadio,handleChangePregnancyAbnormalitiesRadio, handleChangeChildSurvivalRadio} = this.props;
+
     return (
 
 
-      <Fragment>          
+      <Fragment>
         <form onSubmit={this.handleSubmit} className="form-v1">
-            
+
         <FormControl component="fieldset" className={classes.formControl}>
                <h3 style={{color: "red"}}>{values.recent_birthinfo_error}</h3>
                <h4> <b>How recently have you given birth?</b></h4>
@@ -129,7 +129,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 name="child_survival"
                 className={classes.group}
                 value={values.child_survival}
-                onChange={handleChangeRadio('child_survival')}
+                onChange={handleChangeChildSurvivalRadio('child_survival')}
               >
                 <FormControlLabel
                   value= "10"
@@ -143,6 +143,22 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 />
             </RadioGroup>
         </FormControl>
+        {values.child_survival_show?
+        <Grid item xs={12}>
+        <TextField
+            required
+            id="required"
+            label="Brief Description"
+            fullWidth
+            onChange={handleChangeRadio('child_survival_explanation')}
+            defaultValue={values.child_survival_explanation}
+            className={classes.textField}
+            margin="normal"
+            variant="outlined"
+            focused
+        />
+       </Grid>:null
+      }
       <br/>
           <FormControl component="fieldset" className={classes.formControl}>
                   <h3 style={{color: "red"}}>{values.miscarriage_info_error}</h3>
@@ -226,7 +242,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     control={<Radio color="primary" />}
                     label="Greater than 6 months"
                   />
-              </RadioGroup> </FormControl>: null   
+              </RadioGroup> </FormControl>: null
           }
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
@@ -326,23 +342,18 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                       label="Gestational diabetes"
                     />
                 </RadioGroup> </FormControl> : null
-            }  
+            }
           <br />
           <br />
 
-        
+
         </form>
-        
-       
+
+
       </Fragment>
 
-      
+
     );
   }
 }
 )
-
-
-
-
-

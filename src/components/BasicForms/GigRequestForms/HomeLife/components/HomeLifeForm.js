@@ -37,7 +37,7 @@ const styles = theme => ({
   },
   root: {
     display: 'flex',
-   
+
   },
   formControl: {
     margin: theme.spacing(3),
@@ -54,7 +54,7 @@ const styles = theme => ({
     width: 200,
   },
   palette: {
-    primary: '#8A2BE2',
+    primary: '#388e3c',
     secondary: '#ff4081'
   }
 
@@ -84,13 +84,13 @@ export default withStyles(styles) (class NormalForm extends React.Component {
     // this.props.history.push(DEMO.home2);
   }
   render() {
-    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor} = this.props;
-    
+    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor, handleChangeChildrenCustodyRadio, handleChangeChildResideRadio} = this.props;
+
     return (
 
 
       <Fragment>
-        <form onSubmit={this.handleSubmit} className="form-v1">            
+        <form onSubmit={this.handleSubmit} className="form-v1">
         <FormControl component="fieldset" className={classes.formControl}>
                <h3 style={{color: "red"}}>{values.children_custody_error}</h3>
                <h4> <b>Do you currently have custody (full or half) of your children? </b></h4>
@@ -99,7 +99,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
               name="children_custody"
               className={classes.group}
               value={values.children_custody}
-              onChange={handleChangeRadio('children_custody')}
+              onChange={handleChangeChildrenCustodyRadio('children_custody')}
             >
               <FormControlLabel
                 value= "15"
@@ -112,21 +112,23 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 label="No"
               />
           </RadioGroup>
-            <Grid item xs={12}>
-                <TextField
-                    required
-                    id="required"
-                    label="Explain"
-                    fullWidth
-                    onChange={handleChangeLocation('children_custody_explanation')}
-                    defaultValue={values.children_custody_explanation}
-                    className={classes.textField}
-                    margin="normal"
-                    variant="outlined"
-                    focused
-                />
-            </Grid>
         </FormControl>
+        {values.children_custody_show?
+        <Grid item xs={12}>
+        <TextField
+            required
+            id="required"
+            label="Brief Description"
+            fullWidth
+            onChange={handleChangeRadio('children_custody_explanation')}
+            defaultValue={values.children_custody_explanation}
+            className={classes.textField}
+            margin="normal"
+            variant="outlined"
+            focused
+        />
+       </Grid>:null
+      }
       <br/>
         <FormControl component="fieldset" className={classes.formControl}>
                 <h3 style={{color: "red"}}>{values.child_reside_error}</h3>
@@ -136,7 +138,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 name="child_reside"
                 className={classes.group}
                 value={values.child_reside}
-                onChange={handleChangeRadio('child_reside')}
+                onChange={handleChangeChildResideRadio('child_reside')}
               >
                 <FormControlLabel
                   value= "15"
@@ -149,21 +151,23 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                   label="No"
                 />
             </RadioGroup>
-            <Grid item xs={12}>
-                <TextField
-                    required
-                    id="required"
-                    label="Explain"
-                    fullWidth
-                    onChange={handleChangeLocation('child_reside_explanation')}
-                    defaultValue={values.child_reside_explanation}
-                    className={classes.textField}
-                    margin="normal"
-                    variant="outlined"
-                    focused
-                />
-            </Grid>
         </FormControl>
+        {values.child_reside_show?
+          <Grid item xs={12}>
+              <TextField
+                  required
+                  id="required"
+                  label="Explain"
+                  fullWidth
+                  onChange={handleChangeRadio('child_reside_explanation')}
+                  defaultValue={values.child_reside_explanation}
+                  className={classes.textField}
+                  margin="normal"
+                  variant="outlined"
+                  focused
+              />
+          </Grid>:null
+        }
       <br/>
           <FormControl component="fieldset" className={classes.formControl}>
                   <h3 style={{color: "red"}}>{values.reliable_transportation_error}</h3>
@@ -248,7 +252,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     label="Explain"
                     fullWidth
                     onChange={handleChangeLocation('home_life_quality')}
-                    defaultValue={values.home_life_quality}
+                    defaultValue={values.home_life_quality_explanation}
                     className={classes.textField}
                     margin="normal"
                     variant="outlined"
@@ -257,7 +261,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 </Grid>
             </FormControl>
             <br/>
-    
+
 
              {/* <div>
                <h4> <b>Location Details (Optional)</b></h4>
@@ -268,7 +272,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                   }
                   label="Use Back Door"
                  />
-                 
+
                  <FormControlLabel
                   control={
                     <Checkbox checked={values.mealProvided} onChange={handleChangeMealProvided()} value="Meal Provided" color="primary" />
@@ -277,7 +281,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                  />
                 </FormGroup>
               </div> */}
-           
+
             {/* <div>
             <h4> <b>Additional Location Details (Optional)</b></h4>
               <TextField
@@ -293,26 +297,21 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 defaultValue={values.additional_location_details}
                 className={classes.textField}
               />
-              
+
             </div> */}
-            
+
 
           <br />
           <br />
 
-        
+
         </form>
-        
-       
+
+
       </Fragment>
 
-      
+
     );
   }
 }
 )
-
-
-
-
-
