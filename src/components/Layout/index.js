@@ -73,7 +73,7 @@ import logo from './logo/logo.png';
   const theme1 = createMuiTheme({
     palette: {
       primary:  {
-        main: '#00c853'}
+        main: '#00e676'}
 
     },
 
