@@ -21,7 +21,8 @@ import purple from '@material-ui/core/colors/purple';
 import { ThemeProvider } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid';
 
-import Container from '@material-ui/core/Container'
+import Container from '@material-ui/core/Container';
+import logo from './logo/logo.png';
 
 
 
@@ -61,13 +62,18 @@ import Container from '@material-ui/core/Container'
 
     },
 
+    imageDiv: {
+      height:'10px',
+      width:'10px'
+    }
+
   }));
 
 
   const theme1 = createMuiTheme({
     palette: {
       primary:  {
-        main: '#00c853'} 
+        main: '#00c853'}
 
     },
 
@@ -98,7 +104,7 @@ export default  withStyles(styles) (class extends React.Component {
         <Toolbar>
 
           <Typography variant="h6" noWrap>
-            Vita Nova Technologies LLC
+            <img src={logo} width="170px" height="45px" />
           </Typography>
         </Toolbar>
       </AppBar>
