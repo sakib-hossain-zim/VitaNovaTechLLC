@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import InputLabel from '@material-ui/core/InputLabel';
 
 import FormControl from '@material-ui/core/FormControl';
 import { withStyles } from '@material-ui/core/styles';
@@ -22,6 +23,11 @@ import FormGroup from '@material-ui/core/FormGroup'
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
+
+import SelectUSState from 'react-select-us-states';
+import Select from '@material-ui/core/Select';
+
+import states from "../../../../../states.json"
 
 
 
@@ -48,7 +54,7 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 550,
+    width: "70%",
   },
   menu: {
     width: 200,
@@ -71,8 +77,10 @@ export default withStyles(styles) (class NormalForm extends React.Component {
     address: "",
     parking: "",
     location_details: "",
-    additional_location_details: ""
+    additional_location_details: "",
   }
+
+
 
 
 
@@ -83,8 +91,10 @@ export default withStyles(styles) (class NormalForm extends React.Component {
     // console.log(e)
     // this.props.history.push(DEMO.home2);
   }
+
+
   render() {
-    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor} = this.props;
+    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor, handleChangeUsResidenceRadio} = this.props;
 
     return (
 
@@ -183,7 +193,8 @@ export default withStyles(styles) (class NormalForm extends React.Component {
               />
           </RadioGroup>
         </FormControl>
-      <br/>
+
+       <br/>
         <FormControl component="fieldset" className={classes.formControl}>
                 <h3 style={{color: "red"}}>{values.us_residence_error}</h3>
                 <h4> <b>Do you reside in the US?</b></h4>
@@ -192,7 +203,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 name="us_residence"
                 className={classes.group}
                 value={values.us_residence}
-                onChange={handleChangeRadio('us_residence')}
+                onChange={handleChangeUsResidenceRadio('us_residence')}
               >
                 <FormControlLabel
                   value= "10"
@@ -206,7 +217,25 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 />
             </RadioGroup>
         </FormControl>
+        <br/>
+
+        {values.us_states_show?
+          <FormControl variant="outlined" component="fieldset" className={classes.formControl}>
+            <InputLabel>Select your state</InputLabel>
+              <Select
+                native
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                label="Age"
+                onChange={handleChangeLocation('us_state')}
+              >
+                {states.map(item => <option key={item.abbreviation} value={item.abbreviation}>{item.name+ ',' + item.abbreviation}</option>)}
+              </Select>
+          </FormControl>:null
+        }
       <br/>
+
+
           <FormControl component="fieldset" className={classes.formControl}>
                   <h3 style={{color: "red"}}>{values.tobacco_products_use_error}</h3>
                   <h4> <b>Do you use tobacco products?</b></h4>
@@ -301,7 +330,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             <br/>
             <FormControl component="fieldset" className={classes.formControl}>
                     <h3 style={{color: "red"}}>{values.criminalRecord_check_error}</h3>
-                    <h4> <b>Will you complete a criminal record check?</b></h4>
+                    <h4> <b>Will you agree to having a criminal record check performed?</b></h4>
                   <RadioGroup
                     aria-label="criminalRecord_check"
                     name="criminalRecord_check"
@@ -324,7 +353,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             <br/>
             <FormControl component="fieldset" required = "true" className={classes.formControl}>
                     <h3 style={{color: "red"}}>{values.geneticRecord_check_error}</h3>
-                    <h4> <b>Will you take genetic and/or other record checks (the cost will be covered) ?</b></h4>
+                    <h4> <b> Will you agreed to having genetic testing and or other health tests performed (all costs will be covered)?</b></h4>
                   <RadioGroup
                     aria-label="geneticRecord_check"
                     name="geneticRecord_check"

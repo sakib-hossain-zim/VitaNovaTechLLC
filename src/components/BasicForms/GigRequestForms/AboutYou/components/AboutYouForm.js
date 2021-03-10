@@ -84,7 +84,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
     // this.props.history.push(DEMO.home2);
   }
   render() {
-    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor,handleChangePrescriptionRadio,handleChangeTattooTimeRadio,handleChangeMarijuanaRadio} = this.props;
+    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor,handleChangePrescriptionRadio,handleChangeTattooTimeRadio,handleChangeMarijuanaRadio, handleChangeOtherDietRadio} = this.props;
 
     return (
 
@@ -93,74 +93,6 @@ export default withStyles(styles) (class NormalForm extends React.Component {
 
 
         <form onSubmit={this.handleSubmit} className="form-v1">
-
-
-
-          {/* <Grid item xs={12}>
-              <TextField
-                required
-                id="required"
-                label="First Name"
-                fullWidth
-                onChange={handleChangeLocation('first_name')}
-                defaultValue={values.first_name}
-                className={classes.textField}
-                margin="normal"
-                variant="outlined"
-                focused
-              />
-               </Grid>
-
-             <Grid item xs={12}>
-                <TextField
-                  required
-                  id="required"
-                  label="Last Name"
-                  fullWidth
-                  onChange={handleChangeLocation('last_name')}
-                  defaultValue={values.last_name}
-                  className={classes.textField}
-                  margin="normal"
-                  variant="outlined"
-                  focused
-                />
-               </Grid>
-
-               <Typography variant="h6" gutterBottom>
-                  <h5 color> <b> Contact Information  </b> </h5>
-               </Typography>
-
-              <Grid item xs={12}>
-              <TextField
-                required
-                id="required"
-                label="Email Address"
-                fullWidth
-                onChange={handleChangeLocation('email_address')}
-                defaultValue={values.email_address}
-                className={classes.textField}
-                margin="normal"
-                variant="outlined"
-                focused
-              />
-               </Grid>
-
-             <Grid item xs={12}>
-                <TextField
-                  required
-                  id="required"
-                  label="Phone Number"
-                  fullWidth
-                  onChange={handleChangeLocation('phone_number')}
-                  defaultValue={values.phone_number}
-                  className={classes.textField}
-                  margin="normal"
-                  variant="outlined"
-                  focused
-                />
-              </Grid> */}
-
-
 
         <FormControl component="fieldset" className={classes.formControl}>
                <h3 style={{color: "red"}}>{values.age_range_error}</h3>
@@ -242,6 +174,77 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 />
             </RadioGroup>
         </FormControl>
+      <br/>
+        <FormControl component="fieldset" className={classes.formControl}>
+                <h3 style={{color: "red"}}>{values.weekly_diet_error}</h3>
+                <h4> <b>Do you have a weekly diet that you adhere to?</b></h4>
+              <RadioGroup
+                aria-label="weekly_diet"
+                name="weekly_diet"
+                className={classes.group}
+                value={values.weekly_diet}
+                onChange={handleChangeOtherDietRadio('weekly_diet')}
+              >
+                <FormControlLabel
+                  value= "00"
+                  control={<Radio color="primary" />}
+                  label="Gluten-Free"
+                />
+                <FormControlLabel
+                  value= "000"
+                  control={<Radio color="primary" />}
+                  label="Keto"
+                />
+                <FormControlLabel
+                  value= "0000"
+                  control={<Radio color="primary" />}
+                  label="Paleo"
+                />
+                <FormControlLabel
+                  value= "00000"
+                  control={<Radio color="primary" />}
+                  label="Vegan"
+                />
+                <FormControlLabel
+                  value= "000000"
+                  control={<Radio color="primary" />}
+                  label="Vegetarian"
+                />
+                <FormControlLabel
+                  value= "0000000"
+                  control={<Radio color="primary" />}
+                  label="Whole 30"
+                />
+                <FormControlLabel
+                  value= "00000000"
+                  control={<Radio color="primary" />}
+                  label="No Specific Diet"
+                />
+                <FormControlLabel
+                  value= "000000000"
+                  control={<Radio color="primary" />}
+                  label="Other"
+                />
+            </RadioGroup>
+        </FormControl>
+        <br/>
+        {values.other_diet_show?
+        <FormControl component="fieldset" className={classes.formControl}>
+                     <Grid item xs={12}>
+                   <TextField
+                     required
+                     id="required"
+                     label="Other diet explanation"
+                     fullWidth
+                     onChange={handleChangeRadio('other_diet')}
+                     defaultValue={values.other_diet}
+                     className={classes.textField}
+                     margin="normal"
+                     variant="outlined"
+                     focused
+                   />
+                </Grid>
+        </FormControl> :null }
       <br/>
       <FormControl component="fieldset" className={classes.formControl}>
                 <h3 style={{color: "red"}}>{values.alcohol_frequency_error}</h3>

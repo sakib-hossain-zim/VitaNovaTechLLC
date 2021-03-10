@@ -84,7 +84,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
     // this.props.history.push(DEMO.home2);
   }
   render() {
-    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor,handleChangeMiscarriageRadio,handleChangeBreastFeedingRadio,handleChangeCsectionRequirementRadio,handleChangePregnancyAbnormalitiesRadio, handleChangeChildSurvivalRadio} = this.props;
+    const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor,handleChangeMiscarriageRadio,handleChangeBreastFeedingRadio,handleChangeCsectionRequirementRadio,handleChangePregnancyAbnormalitiesRadio, handleChangeChildSurvivalRadio, handleChangeAbnormalityDescriptionRadio} = this.props;
 
     return (
 
@@ -162,7 +162,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <br/>
           <FormControl component="fieldset" className={classes.formControl}>
                   <h3 style={{color: "red"}}>{values.miscarriage_info_error}</h3>
-                  <h4> <b>Have you ever miscarried? If yes, please provide the week at which the event occurred, and if you chose to, a story behind it (car accident, medically necessary, etc.)</b></h4>
+                  <h4> <b>Have you ever miscarried? If yes, please provide the week at which the event occurred, and if you choose to, a story behind it (car accident, medically necessary, etc.)</b></h4>
                 <RadioGroup
                   aria-label="miscarriage_info"
                   name="miscarriage_info"
@@ -324,7 +324,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     name="abnormality_description"
                     className={classes.group}
                     value={values.abnormality_description}
-                    onChange={handleChangeRadio('abnormality_description')}
+                    onChange={handleChangeAbnormalityDescriptionRadio('abnormality_description')}
                   >
                     <FormControlLabel
                       value="10"
@@ -334,15 +334,36 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                     <FormControlLabel
                       value="5"
                       control={<Radio color="primary" />}s
-                      label="Preclampsia"
+                      label="Preeclampsia"
                     />
                     <FormControlLabel
                       value="7"
                       control={<Radio color="primary" />}
                       label="Gestational diabetes"
                     />
+                    <FormControlLabel
+                      value="005"
+                      control={<Radio color="primary" />}s
+                      label="Other"
+                    />
                 </RadioGroup> </FormControl> : null
             }
+            {values.abnormality_other_show?
+            <Grid item xs={12}>
+            <TextField
+                required
+                id="required"
+                label="Brief Description"
+                fullWidth
+                onChange={handleChangeRadio('abnormality_other_explaination')}
+                defaultValue={values.abnormality_other_explaination}
+                className={classes.textField}
+                margin="normal"
+                variant="outlined"
+                focused
+            />
+           </Grid>:null
+          }
           <br />
           <br />
 

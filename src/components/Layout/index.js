@@ -59,7 +59,6 @@ import logo from './logo/logo.png';
     content: {
       flexGrow: 1,
       padding: theme.spacing(2),
-
     },
 
     imageDiv: {
@@ -119,7 +118,7 @@ export default  withStyles(styles) (class extends React.Component {
       <br />
       <br />
 
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
       <main className={classes.content}>
 
         <div className={classes.toolbar} />

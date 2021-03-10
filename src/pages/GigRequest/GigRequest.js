@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment,useEffect} from 'react';
 import QueueAnim from 'rc-queue-anim';
 import BookingForm_Location from '../../components/BasicForms/GigRequestForms/Booking_Location';
 import AboutYouForm from '../../components/BasicForms/GigRequestForms/AboutYou';
@@ -14,6 +14,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Booking_Confirmation from '../../components/BasicForms/GigRequestForms/Booking_Confirmation';
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 import Grid from '@material-ui/core/Grid';
 
@@ -30,11 +31,16 @@ const styles = theme => ({
    display: "flex",
    flexDirection: "column",
    padding: theme.spacing(4, 4),
-   width: "700px",
+   width:"90%",
+   marginLeft: "5%"
 
 
 
   },
+  stepper: {
+        height: "calc(10vh - 40px)",
+        minHeight: "55px"
+    }
 
 });
 
@@ -58,18 +64,15 @@ class GigRequest extends React.Component {
   constructor() {
     super();
   this.state = {
+    isMobile:false,
     activeStep: 0,
-    event_name:"",
-    address: "",
-    parking: "",
-    mealProvided: false,
-    useBackdoor: false,
-    additional_location_details: "",
-    payment_method: "",
+    progress: 14.286,
     birth: "0",
     birth_error: "",
     us_residence: "0",
     us_residence_error: "",
+    us_states_show:"",
+    us_state:"",
     tobacco_products_use: "0",
     tobacco_products_use_error: "",
     drug_use: "0",
@@ -86,6 +89,10 @@ class GigRequest extends React.Component {
     age_range_error: "",
     exercise_frequency: "0",
     exercise_frequency_error: "",
+    weekly_diet: "0",
+    weekly_diet_error: "",
+    other_diet: "",
+    other_diet_show:"",
     alcohol_frequency: "0",
     alcohol_frequency_error: "",
     marijuana_frequency: "0",
@@ -136,6 +143,8 @@ class GigRequest extends React.Component {
     pregnancy_abnormalities_error: "",
     pregnancy_abnormalities_show: false,
     abnormality_description: "0",
+    abnormality_other_show: false,
+    abnormality_other_explaination: "",
     abnormality_description_error: "",
     children_custody: "0",
     children_custody_error: "",
@@ -161,36 +170,24 @@ class GigRequest extends React.Component {
     surrogate_gestational_carrier_error: "",
     current_agency: "0",
     current_agency_error: "",
-
-
-
-
-
-
-    positions: [{
-      position_name: "",
-      shift1_date: "",
-      shift1_start_time:"",
-      shift1_end_time:"",
-      shift1_quantity: 0,
-      shift2_date: "",
-      shift2_start_time:"",
-      shift2_end_time:"",
-      shift2_quantity: 0,
-      instructions: "NONE",
-      required_attire: "NONE",
-      required_accessories: "NONE",
-      onsite_contact_name: "NONE",
-      onsite_contact_number: "NONE",
-      additional_attire_details: "NONE",
-      hourly_rate: 21.87,
-      total : 0,
-      booking_fee: 15
-    }
-    ]
   }
   this.handleChangeRadio = this.handleChangeRadio.bind(this);
+  this.updatePredicate = this.updatePredicate.bind(this);
   };
+
+  componentDidMount() {
+    this.updatePredicate();
+    window.addEventListener("resize", this.updatePredicate);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updatePredicate);
+  }
+
+  updatePredicate() {
+    this.setState({ isMobile: window.innerWidth < 500});
+  }
+
 
   validate = () => {
     let isError = false;
@@ -250,6 +247,7 @@ class GigRequest extends React.Component {
     const errors2 = {
       age_range_error: '',
       exercise_frequency_error: '',
+      weekly_diet_error: '',
       alcohol_frequency_error: '',
       marijuana_frequency_error: '',
       tattoo_time_error: '',
@@ -262,6 +260,10 @@ class GigRequest extends React.Component {
     if(this.state.exercise_frequency === "0") {
       isError2 = true;
       errors2.exercise_frequency_error = 'Please select an option'
+    }
+    if(this.state.weekly_diet === "0") {
+      isError2 = true;
+      errors2.weekly_diet_error = 'Please select an option'
     }
     if(this.state.alcohol_frequency === "0") {
       isError2 = true;
@@ -443,6 +445,7 @@ class GigRequest extends React.Component {
             handleChangeLocationDetails = {this.handleChangeLocationDetails}
             handleChangeUseBackDoor = {this.handleChangeUseBackDoor}
             handleChangeMealProvided = {this.handleChangeMealProvided}
+            handleChangeUsResidenceRadio = {this.handleChangeUsResidenceRadio}
         />
         ;
       case 1:
@@ -456,6 +459,7 @@ class GigRequest extends React.Component {
           handleChangePrescriptionRadio = {this.handleChangePrescriptionRadio}
           handleChangeTattooTimeRadio = {this.handleChangeTattooTimeRadio}
           handleChangeMarijuanaRadio = {this.handleChangeMarijuanaRadio}
+          handleChangeOtherDietRadio = {this.handleChangeOtherDietRadio}
 
     /> ;
       case 2:
@@ -482,6 +486,7 @@ class GigRequest extends React.Component {
           handleChangeCsectionRequirementRadio = {this.handleChangeCsectionRequirementRadio}
           handleChangePregnancyAbnormalitiesRadio = {this.handleChangePregnancyAbnormalitiesRadio}
           handleChangeChildSurvivalRadio = {this.handleChangeChildSurvivalRadio}
+          handleChangeAbnormalityDescriptionRadio = {this.handleChangeAbnormalityDescriptionRadio}
     /> ;
       case 4:
       return  <HomeLifeForm
@@ -515,7 +520,7 @@ class GigRequest extends React.Component {
 
 
   handleNext = () => {
-    const { activeStep } = this.state;
+    const { activeStep, progress} = this.state;
     window.scroll(0,0);
     const err = this.validate();
     const err2 = this.validateStep2();
@@ -533,6 +538,7 @@ class GigRequest extends React.Component {
         console.log('reached here 2')
         this.setState({
           activeStep: activeStep + 1,
+          progress: progress + 14.285,
           birth_error: "",
           us_residence_error: '',
           tobaco_products_use_error: '',
@@ -548,8 +554,10 @@ class GigRequest extends React.Component {
       if(!err2){
         this.setState({
           activeStep: activeStep + 1,
+          progress: progress + 14.285,
           age_range_error: '',
           exercise_frequency_error: '',
+          weekly_diet_error: '',
           alcohol_frequency_error: '',
           marijuana_frequency_error: '',
           tattoo_time_error: '',
@@ -561,6 +569,7 @@ class GigRequest extends React.Component {
         if(!err3){
           this.setState({
             activeStep: activeStep + 1,
+            progress: progress + 14.285,
             government_support_error: '',
             reliable_income_source_error: '',
             convicted_of_crime_error: '',
@@ -572,6 +581,7 @@ class GigRequest extends React.Component {
         if(!err4){
           this.setState({
             activeStep: activeStep + 1,
+            progress: progress + 14.285,
             recent_birthinfo_error: '',
             child_survival_error: '',
             miscarriage_info_error: '',
@@ -585,6 +595,7 @@ class GigRequest extends React.Component {
         if(!err5){
           this.setState({
             activeStep: activeStep + 1,
+            progress: progress + 14.285,
             children_custody_error: '',
             child_reside_error: '',
             reliable_transportation_error: '',
@@ -597,6 +608,7 @@ class GigRequest extends React.Component {
         if(!err6){
           this.setState({
             activeStep: activeStep + 1,
+            progress: progress + 14.285,
             medical_history_error: '',
             surrogate_gestational_carrier_error: '',
             current_agency_error: '',
@@ -719,115 +731,18 @@ class GigRequest extends React.Component {
   };
 
   handleBack = () => {
-    const { activeStep } = this.state;
+    const { activeStep, progress } = this.state;
     this.setState({
       activeStep: activeStep - 1,
+      progress: progress - 14.286
     });
   };
 
 
   handleSubmit = () => {
+    // Once submit is hit use serverless to send the json data to the NoSql database in aws
+  }
 
-    let shifts = [];
-    let instructions = [];
-
-    let insert_data = [{
-      "eventName": this.state.event_name,
-      "location" : this.state.address,
-      "parking": this.state.parking,
-      "mealProvided": this.state.mealProvided,
-      "useBackdoor": this.state.useBackdoor,
-      "additionalInfo": this.state.additional_location_details,
-      "shifts": shifts,
-      "instructions": instructions
-    }];
-
-
-    for(var i=0;i<this.state.positions.length;i++){
-      var shift1 = {
-        "position": this.state.positions[i].position_name,
-        "start": this.state.positions[i].shift1_date + this.state.positions[i].shift1_start_time,
-        "end": this.state.positions[i].shift1_date + this.state.positions[i].shift1_end_time,
-        "count": this.state.positions[i].shift1_quantity
-      }
-      var shift2={
-        "position": this.state.positions[i].position_name,
-        "start": this.state.positions[i].shift2_date + this.state.positions[i].shift2_start_time,
-        "end": this.state.positions[i].shift2_date + this.state.positions[i].shift2_end_time,
-        "count": this.state.positions[i].shift2_quantity
-      }
-      shifts.push(shift1);
-      shifts.push(shift2);
-
-    }
-
-    // insert_data.push(shifts);
-
-    for(var i=0;i<this.state.positions.length;i++){
-      var new_instructions = {
-        "position": "event-server",
-		  	"attire": this.state.positions[i].required_attire,
-			  "customAttire": this.state.positions[i].required_accessories,
-        "additionalInfo": this.state.positions[i].additional_attire_details,
-        "contacts": [{
-        "name": this.state.positions[i].onsite_contact_name,
-        "phone": this.state.positions[i].onsite_contact_number
-        }]
-      }
-
-      instructions.push(new_instructions);
-
-
-    }
-
-
-    fetch("http://app.patternjobs.com/api/v1/gigs", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer" + localStorage.getItem('jwtToken')
-    },
-      body: JSON.stringify(insert_data),
-
-    })
-    .then(function(response) {
-      if (response.status >= 400) {
-        throw new Error("Bad response from server");
-      }
-      return response.json();
-    })
-    .then(function(insert_data) {
-      console.log(insert_data);
-    })
-    .catch(function(err) {
-      console.log(err);
-    })
-
-
-
-    console.log(insert_data);
-
-
-  };
-
-  // Handle fields change
-  handleChange = (idx,input) => e => {
-    const val = 0;
-
-
-
-
-    const newPosition = this.state.positions.map((position, sidx) => {
-      if (idx !== sidx) return position;
-      return { ...position, [input]: e.target.value};
-    });
-
-    console.log(newPosition);
-    this.setState({ positions: newPosition });
-
-
-    // this.setState({ [input]: e.target.value });
-  };
 
   handleChangeRadio = input => e => {
     e.preventDefault();
@@ -842,73 +757,26 @@ class GigRequest extends React.Component {
     this.setState({[input]: e.target.value});
   }
 
-
-  handleChangeUseBackDoor = () => e => {
-    this.setState({useBackdoor: !this.state.useBackdoor});
+  handleChangeUsResidenceRadio = input => e => {
+    if (e.target.value === '10') {
+      this.setState({[input]:e.target.value})
+      this.setState({us_states_show: true})
+    } else {
+      this.setState({[input]:e.target.value});
+      this.setState({us_states_show: false})
+    }
+    console.log(e.target.value);
   }
-
-
-  handleChangeMealProvided = () => e => {
-    this.setState({mealProvided: !this.state.mealProvided});
+  handleChangeOtherDietRadio = input => e => {
+    if (e.target.value === '000000000') {
+      this.setState({[input]:e.target.value})
+      this.setState({other_diet_show: true})
+    } else {
+      this.setState({[input]:e.target.value});
+      this.setState({prescription_show: false})
+    }
+    console.log(e.target.value);
   }
-
-
-  handleChangePositionSelection = (idx,input) => e => {
-
-    const newPosition = this.state.positions.map((position, sidx) => {
-      if (idx !== sidx) return position;
-      return { ...position, [input]: e.target.value};
-    });
-
-
-    console.log(newPosition);
-
-    this.setState({ positions: newPosition });
-
-
-
-
-
-    // this.setState({[input]: e.target.value});
-  };
-
-
-
-
-
-
-  handleChangeAttireSelection = input => e => {
-    this.setState({[input]: e.target.value});
-  };
-
-
-
-  handleChangeAccessoriesSelection = input => e => {
-    this.setState({[input]: e.target.value});
-  };
-
-
-  handleAddPosition = () => {
-
-    this.setState({
-      positions: this.state.positions.concat([{ position_name: "",shift1_quantity: 0, shift2_quantity:0,hourly_rate:21.87,booking_fee:15}])
-
-    });
-
-    console.log("HERERERER")
-  }
-
-  // handleChangePrescriptionRadio = input => e => {
-  //   const ref = this;
-  //   const run = async () => {
-
-  //   const stateChange = await ref.setState({[input]:e.target.value})
-  //   if(this.prescription_medication === 0) {
-  //     ref.setState({prescription_show: true}
-  //   }
-  // }
-  // }
-
   handleChangePrescriptionRadio = input => e => {
     if (e.target.value === '15') {
       this.setState({[input]:e.target.value})
@@ -1010,6 +878,16 @@ class GigRequest extends React.Component {
     console.log(e.target.value);
   }
 
+  handleChangeAbnormalityDescriptionRadio = input => e => {
+    if (e.target.value === '005') {
+      this.setState({[input]:e.target.value})
+      this.setState({abnormality_other_show: true})
+    } else {
+      this.setState({[input]:e.target.value});
+      this.setState({abnormality_other_show: false})
+    }
+  }
+
   handleChangeChildrenCustodyRadio = input => e => {
     if (e.target.value === '000') {
       this.setState({[input]:e.target.value})
@@ -1031,6 +909,8 @@ class GigRequest extends React.Component {
     }
     console.log(e.target.value);
   }
+
+
 
 
 
@@ -1071,10 +951,11 @@ class GigRequest extends React.Component {
   render() {
     const { classes } = this.props;
     const steps = getSteps();
-    const { activeStep } = this.state;
+    const { activeStep, progress } = this.state;
+    const isMobile = this.state.isMobile;
 
 
-    const {birth,us_residence,tobacco_product_use,drug_use,injection_use,doctors_orders,criminalRecord_check,geneticRecord_check,age_range,exercise_frequency,alcohol_frequency,marijuana_frequency,marijuana_option,tattoo_time,tattoo_duration,prescription_medication,prescription_medication_choice,other_prescription_medication,government_support,reliable_income_source,convicted_of_crime,crime_explanation,recent_birthinfo,child_survival,miscarriage_info,miscarriage_explanation,breast_feeding,breast_feeding_timePeriod,csection_requirement,csection_frequency,pregnancy_abnormalitites,abnormality_description,children_custody,children_custody_explanation,child_reside,child_reside_explanation,reliable_transportation,smart_device_accessibility,home_life_quality,home_life_quality_explanation,medical_history,surrogate_gestational_carrier,current_agency,prescription_show,tattoo_time_show,convicted_of_crime_show,miscarriage_info_show,breast_feeding_show,csection_requirement_show,pregnancy_abnormalities_show,child_survival_show,
+    const {birth,us_residence,us_state,us_states_show,tobacco_product_use,drug_use,injection_use,doctors_orders,criminalRecord_check,geneticRecord_check,age_range,exercise_frequency,weekly_diet,other_diet,alcohol_frequency,marijuana_frequency,marijuana_option,tattoo_time,tattoo_duration,prescription_medication,prescription_medication_choice,other_prescription_medication,government_support,reliable_income_source,convicted_of_crime,crime_explanation,recent_birthinfo,child_survival,miscarriage_info,miscarriage_explanation,breast_feeding,breast_feeding_timePeriod,csection_requirement,csection_frequency,pregnancy_abnormalitites,abnormality_description,abnormality_other_explaination,abnormality_other_show,children_custody,children_custody_explanation,child_reside,child_reside_explanation,reliable_transportation,smart_device_accessibility,home_life_quality,home_life_quality_explanation,medical_history,surrogate_gestational_carrier,current_agency,other_diet_show,prescription_show,tattoo_time_show,convicted_of_crime_show,miscarriage_info_show,breast_feeding_show,csection_requirement_show,pregnancy_abnormalities_show,child_survival_show,
       marijuana_option_show,
       children_custody_show,
       child_reside_show,
@@ -1088,6 +969,7 @@ class GigRequest extends React.Component {
       geneticRecord_check_error,
       age_range_error,
       exercise_frequency_error,
+      weekly_diet_error,
       alcohol_frequency_error,
       marijuana_frequency_error,
       tattoo_time_error,
@@ -1118,7 +1000,7 @@ class GigRequest extends React.Component {
       medical_history_error,
       surrogate_gestational_carrier_error,
       current_agency_error} = this.state;
-    const values = {birth,us_residence,tobacco_product_use,drug_use,injection_use,doctors_orders,criminalRecord_check,geneticRecord_check,age_range,exercise_frequency,alcohol_frequency,marijuana_frequency,marijuana_option,tattoo_time,tattoo_duration,prescription_medication,prescription_medication_choice,other_prescription_medication,government_support,reliable_income_source,convicted_of_crime,crime_explanation,recent_birthinfo,child_survival,miscarriage_info,miscarriage_explanation,breast_feeding,breast_feeding_timePeriod,csection_requirement,csection_frequency,pregnancy_abnormalitites,abnormality_description,children_custody,children_custody_explanation,child_reside,child_reside_explanation,reliable_transportation,smart_device_accessibility,home_life_quality,home_life_quality_explanation,medical_history,surrogate_gestational_carrier,current_agency,prescription_show,tattoo_time_show,convicted_of_crime_show,miscarriage_info_show,breast_feeding_show,csection_requirement_show,pregnancy_abnormalities_show,child_survival_show,
+    const values = {birth,us_residence,us_state,us_states_show,tobacco_product_use,drug_use,injection_use,doctors_orders,criminalRecord_check,geneticRecord_check,age_range,exercise_frequency,weekly_diet,other_diet,alcohol_frequency,marijuana_frequency,marijuana_option,tattoo_time,tattoo_duration,prescription_medication,prescription_medication_choice,other_prescription_medication,government_support,reliable_income_source,convicted_of_crime,crime_explanation,recent_birthinfo,child_survival,miscarriage_info,miscarriage_explanation,breast_feeding,breast_feeding_timePeriod,csection_requirement,csection_frequency,pregnancy_abnormalitites,abnormality_description,abnormality_other_explaination,abnormality_other_show,children_custody,children_custody_explanation,child_reside,child_reside_explanation,reliable_transportation,smart_device_accessibility,home_life_quality,home_life_quality_explanation,medical_history,surrogate_gestational_carrier,current_agency,other_diet_show,prescription_show,tattoo_time_show,convicted_of_crime_show,miscarriage_info_show,breast_feeding_show,csection_requirement_show,pregnancy_abnormalities_show,child_survival_show,
       marijuana_option_show,
       children_custody_show,
       child_reside_show,
@@ -1132,6 +1014,7 @@ class GigRequest extends React.Component {
       geneticRecord_check_error,
       age_range_error,
       exercise_frequency_error,
+      weekly_diet_error,
       alcohol_frequency_error,
       marijuana_frequency_error,
       tattoo_time_error,
@@ -1171,17 +1054,43 @@ class GigRequest extends React.Component {
 
       <h2 className="article-title">Pre-screen Questionnaire</h2>
       <Paper className = {classes.root}>
-          <Stepper activeStep={activeStep} className="stepper-header">
-            {steps.map((label, index) => {
-              const props = {};
-              const labelProps = {};
-              return (
-                <Step key={label} {...props}>
-                  <StepLabel {...labelProps}>{label}</StepLabel>
-                </Step>
-              );
-            })}
-          </Stepper>
+      {isMobile? (
+        <div>
+          <Box position="relative" display="inline-flex">
+            <CircularProgress variant="static" value={progress} />
+              <Box
+                top={0}
+                left={0}
+                bottom={0}
+                right={0}
+                position="absolute"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Typography variant="caption" component="div" color="textSecondary">{activeStep +
+                `/6`}</Typography>
+              </Box>
+          </Box>
+          <br/>
+
+          <p style={{color:"#00e676"}}><b> {steps[activeStep]} </b></p>
+        </div>
+
+      ): (
+        <Stepper activeStep={activeStep} alternativeLabel>
+          {steps.map((label, index) => {
+            const props = {};
+            const labelProps = {};
+            return (
+              <Step key={label} {...props} >
+                <StepLabel {...labelProps}>{label}</StepLabel>
+              </Step>
+            );
+          })}
+        </Stepper>
+
+      )}
           {activeStep === steps.length ? (
             <div>
               <Typography className="stepper-content">
