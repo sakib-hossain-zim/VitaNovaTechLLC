@@ -37,7 +37,7 @@ const styles = theme => ({
   },
   root: {
     display: 'flex',
-   
+
   },
   formControl: {
     margin: theme.spacing(3),
@@ -48,7 +48,7 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 550,
+    width: "80%",
   },
   menu: {
     width: 200,
@@ -85,13 +85,13 @@ export default withStyles(styles) (class NormalForm extends React.Component {
   }
   render() {
     const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor} = this.props;
-    
+
     return (
 
 
       <Fragment>
-  
-              
+
+
         <form onSubmit={this.handleSubmit} className="form-v1">
 
 
@@ -110,7 +110,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 focused
               />
                </Grid>
-         
+
              <Grid item xs={12}>
                 <TextField
                   required
@@ -144,7 +144,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 focused
               />
                </Grid>
-         
+
              <Grid item xs={12}>
                 <TextField
                   required
@@ -161,7 +161,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
               </Grid> */}
 
 
-            
+
         <FormControl component="fieldset" className={classes.formControl}>
                <h3 style={{color: "red"}}>{values.medical_history_error}</h3>
                <h4> <b>Will you provide all your medical history (relevant to being a surrogate) </b></h4>
@@ -231,7 +231,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
               </RadioGroup>
           </FormControl>
       <br/>
-    
+
 
              {/* <div>
                <h4> <b>Location Details (Optional)</b></h4>
@@ -242,7 +242,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                   }
                   label="Use Back Door"
                  />
-                 
+
                  <FormControlLabel
                   control={
                     <Checkbox checked={values.mealProvided} onChange={handleChangeMealProvided()} value="Meal Provided" color="primary" />
@@ -251,7 +251,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                  />
                 </FormGroup>
               </div> */}
-           
+
             {/* <div>
             <h4> <b>Additional Location Details (Optional)</b></h4>
               <TextField
@@ -267,26 +267,21 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 defaultValue={values.additional_location_details}
                 className={classes.textField}
               />
-              
+
             </div> */}
-            
+
 
           <br />
           <br />
 
-        
+
         </form>
-        
-       
+
+
       </Fragment>
 
-      
+
     );
   }
 }
 )
-
-
-
-
-

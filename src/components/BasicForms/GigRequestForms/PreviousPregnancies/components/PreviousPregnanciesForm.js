@@ -48,7 +48,7 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 550,
+    width:"80%",
   },
   menu: {
     width: 200,

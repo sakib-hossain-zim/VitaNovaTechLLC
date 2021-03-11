@@ -48,7 +48,7 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 550,
+    width: "80%",
   },
   menu: {
     width: 200,
@@ -177,7 +177,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
       <br/>
         <FormControl component="fieldset" className={classes.formControl}>
                 <h3 style={{color: "red"}}>{values.weekly_diet_error}</h3>
-                <h4> <b>Do you have a weekly diet that you adhere to?</b></h4>
+                <h4> <b>Do you have a specific diet that you follow?</b></h4>
               <RadioGroup
                 aria-label="weekly_diet"
                 name="weekly_diet"

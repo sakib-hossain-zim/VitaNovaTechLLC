@@ -353,7 +353,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
             <br/>
             <FormControl component="fieldset" required = "true" className={classes.formControl}>
                     <h3 style={{color: "red"}}>{values.geneticRecord_check_error}</h3>
-                    <h4> <b> Will you agreed to having genetic testing and or other health tests performed (all costs will be covered)?</b></h4>
+                    <h4> <b> Will you agree to having genetic testing and or other health tests performed (all costs will be covered)?</b></h4>
                   <RadioGroup
                     aria-label="geneticRecord_check"
                     name="geneticRecord_check"

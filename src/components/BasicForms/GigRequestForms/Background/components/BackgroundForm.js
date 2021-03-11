@@ -37,7 +37,7 @@ const styles = theme => ({
   },
   root: {
     display: 'flex',
-   
+
   },
   formControl: {
     margin: theme.spacing(3),
@@ -48,7 +48,7 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 550,
+    width: "80%",
   },
   menu: {
     width: 200,
@@ -85,13 +85,13 @@ export default withStyles(styles) (class NormalForm extends React.Component {
   }
   render() {
     const { values, handleChangeLocation,handleChangeRadio,handleChangeLocationDetails, classes, handleChangeMealProvided, handleChangeUseBackDoor, handleChangeConvictedofCrimeRadio} = this.props;
-    
+
     return (
 
 
       <Fragment>
-      
-              
+
+
         <form onSubmit={this.handleSubmit} className="form-v1">
 
 
@@ -110,7 +110,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 focused
               />
                </Grid>
-         
+
              <Grid item xs={12}>
                 <TextField
                   required
@@ -144,7 +144,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
                 focused
               />
                </Grid>
-         
+
              <Grid item xs={12}>
                 <TextField
                   required
@@ -161,7 +161,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
               </Grid> */}
 
 
-            
+
         <FormControl component="fieldset" className={classes.formControl}>
                <h3 style={{color: "red"}}>{values.government_support_error}</h3>
                <h4> <b>Are you currently on welfare or any other government assistance including disability?</b></h4>
@@ -231,7 +231,7 @@ export default withStyles(styles) (class NormalForm extends React.Component {
               </RadioGroup>
           </FormControl>
 
-          {values.convicted_of_crime_show? 
+          {values.convicted_of_crime_show?
             <FormControl component="fieldset" className={classes.formControl}>
                   <h3> If yes, please provide a brief description </h3>
                   <Grid item xs={12}>
@@ -252,19 +252,14 @@ export default withStyles(styles) (class NormalForm extends React.Component {
           <br />
           <br />
 
-        
+
         </form>
-        
-       
+
+
       </Fragment>
 
-      
+
     );
   }
 }
 )
-
-
-
-
-

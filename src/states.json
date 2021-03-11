@@ -40,20 +40,12 @@
     "abbreviation": "DC"
   },
   {
-    "name": "Federated States Of Micronesia",
-    "abbreviation": "FM"
-  },
-  {
     "name": "Florida",
     "abbreviation": "FL"
   },
   {
     "name": "Georgia",
     "abbreviation": "GA"
-  },
-  {
-    "name": "Guam",
-    "abbreviation": "GU"
   },
   {
     "name": "Hawaii",
@@ -90,10 +82,6 @@
   {
     "name": "Maine",
     "abbreviation": "ME"
-  },
-  {
-    "name": "Marshall Islands",
-    "abbreviation": "MH"
   },
   {
     "name": "Maryland",
