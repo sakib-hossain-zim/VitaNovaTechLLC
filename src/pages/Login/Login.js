@@ -1,6 +1,5 @@
 import React, {Fragment} from 'react';
 import QueueAnim from 'rc-queue-anim';
-import BookingForm_Location from '../../components/BasicForms/GigRequestForms/Booking_Location';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
@@ -8,7 +7,7 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Booking_Confirmation from '../../components/BasicForms/GigRequestForms/Booking_Confirmation';
+
 
 
 import Paper from '@material-ui/core/Paper';
@@ -109,14 +108,14 @@ class Login extends React.Component {
 
       })
       .then(
-         self.props.history.push('/GigRequest',this.state)
+         self.props.history.push('/SurrogacyApplicationForm',this.state)
 
       )
 
 
 
 
-    this.props.history.push('/GigRequest',this.state)
+    this.props.history.push('/SurrogacyApplicationForm',this.state)
 
 
 

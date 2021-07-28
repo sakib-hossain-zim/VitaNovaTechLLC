@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
-import GigRequest from "./pages/GigRequest/GigRequest";
+import ApplicationConsole from "./pages/Console/ApplicationConsole";
 
 import Error from "./pages/Error/Error";
 
@@ -34,7 +34,7 @@ class App extends React.Component {
         <Switch>
           <Route path="/" component={Register} exact />
            <Route path="/Login" component={Login} />
-          <Route path="/GigRequest" component={GigRequest}/>
+          <Route path="/SurrogacyApplicationForm" component={ApplicationConsole}/>
           <Route component={Error}/>
         </Switch>
       </BrowserRouter>

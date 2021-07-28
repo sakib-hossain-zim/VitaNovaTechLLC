@@ -21,7 +21,8 @@
     "react-router-dom": "^5.0.1",
     "react-router-redux": "^4.0.8",
     "react-scripts": "3.0.1",
-    "react-select-us-states": "^0.1.2"
+    "react-select-us-states": "^0.1.2",
+    "uuid": "^7.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -43,5 +44,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.887.0",
+    "serverless-bundle": "^4.2.3"
   }
 }

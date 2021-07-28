@@ -1,11 +1,11 @@
 import React, {Fragment,useEffect} from 'react';
 import QueueAnim from 'rc-queue-anim';
-import BookingForm_Location from '../../components/BasicForms/GigRequestForms/Booking_Location';
-import AboutYouForm from '../../components/BasicForms/GigRequestForms/AboutYou';
-import BackgroundForm from '../../components/BasicForms/GigRequestForms/Background';
-import PreviousPregnanciesForm from '../../components/BasicForms/GigRequestForms/PreviousPregnancies';
-import HomeLifeForm from '../../components/BasicForms/GigRequestForms/HomeLife';
-import SurrogacySpecificsForm from '../../components/BasicForms/GigRequestForms/SurrogacySpecifics';
+import PreScreenForm from '../../components/BasicForms/SurrogacyForms/PreScreen';
+import AboutYouForm from '../../components/BasicForms/SurrogacyForms/AboutYou';
+import BackgroundForm from '../../components/BasicForms/SurrogacyForms/Background';
+import PreviousPregnanciesForm from '../../components/BasicForms/SurrogacyForms/PreviousPregnancies';
+import HomeLifeForm from '../../components/BasicForms/SurrogacyForms/HomeLife';
+import SurrogacySpecificsForm from '../../components/BasicForms/SurrogacyForms/SurrogacySpecifics';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
@@ -13,7 +13,7 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Booking_Confirmation from '../../components/BasicForms/GigRequestForms/Booking_Confirmation';
+import ContactUs  from '../../components/BasicForms/SurrogacyForms/ContactUs';
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 import Grid from '@material-ui/core/Grid';
@@ -49,7 +49,7 @@ var final_value = 0;
 
 
 function getSteps() {
-  return ['Pre-screen', 'About you','Background','Previous Preganancies','Home Life', 'Surrogacy Specifics'];
+  return ['Pre-screen', 'About you','Background','Previous Pregnancies','Home Life', 'Surrogacy Specifics'];
 }
 
 
@@ -60,7 +60,7 @@ function getSteps() {
 
 
 
-class GigRequest extends React.Component {
+class ApplicationConsole extends React.Component {
   constructor() {
     super();
   this.state = {
@@ -438,7 +438,7 @@ class GigRequest extends React.Component {
   getStepContent = (step,values) => {
     switch (step) {
       case 0:
-        return  <BookingForm_Location
+        return  <PreScreenForm
             values={values}
             handleChangeLocation = {this.handleChangeLocation}
             handleChangeRadio = {this.handleChangeRadio}
@@ -509,7 +509,7 @@ class GigRequest extends React.Component {
         handleChangeMealProvided = {this.handleChangeMealProvided}
   /> ;
       case 6:
-        return <Booking_Confirmation
+        return <ContactUs
         values = {values}
         />;
       default:
@@ -1123,6 +1123,14 @@ class GigRequest extends React.Component {
                 >
                   {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                 </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={this.handleSave}
+                  className = {classes.button}
+                >
+                  Save and Continue later
+                </Button>
               </div>
             </div>
           )}
@@ -1141,8 +1149,8 @@ class GigRequest extends React.Component {
   }
 }
 
-GigRequest.propTypes = {
+ApplicationConsole.propTypes = {
   classes: PropTypes.object,
 };
 
-export default withStyles(styles)(GigRequest);
+export default withStyles(styles)(ApplicationConsole);
